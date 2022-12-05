@@ -1,0 +1,292 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.dado{
+    background-color: white;
+    height: 500px;
+    width: 650px;
+
+}
+.mensagem{
+    width: 15vw;
+    height: 70vh;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 10px 10px 10px 10px;
+    gap: 10px;
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+}
+
+.mensagem::-webkit-scrollbar {
+    width: 5px;
+}
+
+.mensagem::-webkit-scrollbar-thumb {
+    background-color: #252525;
+    border-radius: 3px;
+}
+
+.mensagem::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.alerta{
+    /* margin-top: 10px; */
+    background-color: rgb(234,125,51);
+    width: 180px;
+    /* height: 450px; */
+    /* margin-bottom: 5px; */
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* justify-content: flex-start; */
+    padding: 10px;
+    /* margin-top: 5px; */
+    /* overflow: auto; */
+}
+
+.alerta i{
+    font-size: 25px;
+    /* margin-top: 17px; */
+}
+
+.alerta p {
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.perigo{
+    background-color: rgb(234, 51, 51);
+}
+
+.div2{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.screen2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.screen2 label{
+    font-size: 25px;
+    margin: 0 0 10px 15px;
+    color: black;
+    
+}
+
+.grafico {
+    display: flex;
+    align-items: center;
+    z-index: 6;
+    position: relative;
+}
+
+.grafico_linha{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+    /* background-color: white; */
+    /* background-color: #e6903a; */
+    /* margin-top: 20px; */
+    margin: 0px;
+    background-color: #f1f1f1;
+}
+
+.dado{
+    border-radius: 5px;
+}
+
+.divDado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kpiDados{
+    background-color: white;
+    width: 105px;
+    height: 105px;
+    margin-bottom: 27px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    
+    
+}
+.dado1{
+    background-color: rgb(234,125,51);
+}
+.dado2{
+    background-color: rgb(27,49,87);
+}
+.dado3{
+    background-color: rgb(36,103,189);
+}
+.kpiDados b{
+    font-size: 13px;
+}
+.kpiDados p{
+    font-size: 32px;
+    margin-top: 10px;
+}
+.kpi{
+    display: flex;
+    flex-direction: column;
+    /* margin-right: 7%; */
+    margin-top: 2%;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+.medidor{
+    display: grid;
+    gap: 20px;
+    
+    grid-template-areas: 
+    'medidor medidor medidor'
+    'b1 b2 b3'
+}
+.medidor b{
+    font-size: 14px;
+    color: black;
+}
+.imgMedidor{
+    grid-area: medidor;
+    padding-left: 15px;
+}
+.b1{
+    grid-area: b1;
+}
+.b2{
+    grid-area: b2;
+}
+.b3{
+    grid-area: b3;
+}
+/* .grafico{
+    margin: 30px;
+}
+.div_main{
+    height: 670px;
+}
+ */
+
+.div_main{
+    margin-left: 70px;
+    height: 100vh;
+    background-color: var(--background-dashboard);
+}
+
+#myChart31{
+    position: relative; 
+    height:60vh; 
+    width:50vw;
+    z-index: 6;
+}
+
+.caixa-margim {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.kpi {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-start;
+    /* padding: 0px; */
+}
+
+.kpi .indicadorCaixa {
+    width: 2vw;
+    height: 4vh;
+    /* background-color: aqua; */
+    border-radius: 3px;
+}
+
+.kpi .indicadorCaixa.colorA {
+    background-color: #0e3363;
+}
+
+.kpi .indicadorCaixa.colorB {
+    background-color: #e6903a;
+}
+
+.kpi .indicadorCaixa.colorC {
+    background-color: rgb(240, 59, 59);
+}
+
+.alertAtualizacao {
+    width: 20vw;
+    height: 5vh;
+    background-color: white;
+    position: absolute;
+    left: 845px;
+    margin: 40px 0;
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: 2s ease-in-out;
+}
+
+.select_chart h4{
+    font-size: 13px;
+}
+
+.select_chart {
+    gap: 0px;
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+}
+
+.select_chart .div_input {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_input input {
+    width: 6vw;
+    height: 5vh;
+    text-align: center;
+    /* border: none; */
+    /* border-radius: 3px; */
+}
+
+
+.div_input button {
+    width: 6vw;
+    height: 5vh;
+    background-color: #2866b8;
+}

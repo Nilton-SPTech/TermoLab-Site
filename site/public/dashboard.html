@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+
+    <link rel="stylesheet" href="assets/css/navbar_dashboard.css">
+</head>
+<body>
+    
+    <!-- NAVBAR -->
+    <div class="div_navbar" id="div_navbar">
+        <div class="div_container">
+            <div class="div_menu" onclick="expandir_navbar(1)">
+
+                <div id="menu_solo">
+                    <i class='bx bx-menu bx-md'></i>
+                </div>
+                <div id="menu_conjunto">
+                    <i class='bx bx-menu bx-md'></i>
+                    Menu
+                </div>
+            </div>
+            <div class="div_icons_navbar">
+                <div class="div_icon" id="div_icon1">
+
+                    <div id="div_icon_solo1"
+                        onclick="window.location.href='dashboard.html'"
+                    >
+                        <i 
+                            class='bx bxs-dashboard'  
+                            style="font-size: 30px;"
+                        ></i>
+                    </div>
+                    <div 
+                        id="div_icon_conjunto1" 
+                        class="div_icon_conjunto" 
+                        style="display: none; gap: 10px;"
+                        onclick="window.location.href='dashboard.html'"
+                        >
+                        <i 
+                            class='bx bxs-dashboard'  
+                            style="font-size: 30px;"
+                        ></i>
+                        <span id="s_icon_texto">
+                            Dashboard
+                        </span>
+                    </div>
+                </div>
+                <div class="div_icon" id="div_icon2">
+
+                    <div id="div_icon_solo2"
+                    onclick="window.location.href='dashboard2.html'"
+                    >
+                        <i 
+                            class='bx bxs-objects-vertical-bottom'
+                            style="font-size: 30px;"
+                        ></i>
+                    </div>
+                    <div 
+                        id="div_icon_conjunto2" 
+                        style="display: none; gap: 10px;"
+                        onclick="window.location.href='dashboard2.html'"
+                        > 
+
+                        <i 
+                            class='bx bxs-objects-vertical-bottom'
+                            style="font-size: 30px;"
+                        ></i>
+                        <span>
+                            Gráficos
+                        </span>
+                    </div>
+                </div>
+                <div class="div_icon" id="div_icon3">
+
+                    <div id="div_icon_solo3"
+                    onclick="window.location.href='dashboard2.html'"
+                    >
+                        <i 
+                            class='bx bx-cog bx-sm'
+                            style="font-size: 30px;"
+                        ></i>
+                    </div>
+
+                    <div  
+                        id="div_icon_conjunto3" 
+                        style="display: none; gap: 10px;"
+                        onclick="window.location.href='dashboard2.html'"
+                    > 
+                        <i 
+                            class='bx bx-cog bx-sm'
+                            style="font-size: 30px;"
+                        ></i>
+                        <span id="s_icon_texto">
+                            Configurações
+                        </span>
+                    </div>
+                </div>
+
+                <div class="div_icon_exit"
+                onclick="sair()"
+                >
+                    <i 
+                        class='bx bx-exit'
+                    ></i>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Modal Cadastro -->
+    <div id="modalV" class="modal_cadastrar_vacina">
+        <div class="caixaFormulario">
+            <h3>Cadastro de Vacina</h3>
+            <span></span>
+            <label for="selVacina">Vacina</label>
+            <select id="selVacina" class="sel_vacina">
+                <option disabled selected>Vacinas</option>
+            </select>
+            <label for="inData">Validade</label>
+            <input type="date" id="inData" class="in_data">
+            <label for="inLote">Lote</label>
+            <input type="text" id="inLote" class="in_lote">
+            <label for="selSetor">Setor</label>
+            <select id="selSetor" class="sel_setor">
+                
+            </select>
+            <button onclick="cadastrarMedicamento()" class="bVacina">Cadastrar</button>
+        </div>
+    </div>
+
+    <div id="modalS" class="modal_cadastrar_setor">
+        <div class="caixaFormulario">
+            <h3>Cadastro de Setor</h3>
+            <span></span>
+            <label for="inAndar">Andar</label>
+            <input type="text" id="inAndar">
+            <label for="inSala">Sala</label>
+            <input type="text" id="inSala">
+            <label for="inTemp">Temperatura Média</label>
+            <input type="text" id="inTemp">
+            <button onclick="cadastrar_setor()" class="bSetor">Cadastrar</button>
+        </div>
+    </div>
+
+
+    <div class="div_main">
+        <!-- HEADER -->
+        <div class="div_header">
+            <div class="div_usuario">
+                <i class='bx bxs-user-circle bx-lg' style='color:#174580'  ></i>
+                <p>Olá, <span id="s_nome"></span></p>
+            </div>
+            <div class="botoes_header">
+                <button class="cadVacina">Cadastrar Vacina</button>
+                <button class="cadSetor">Cadastrar Setor</button>
+            </div>
+        </div>
+        
+
+        <!-- KPI E INFORMATIVOS UNITÁRIOS -->
+        <div class="div_kpi">
+            <div class="div_container" id="div_container_medicamento">
+                
+    
+            </div>
+        </div>
+
+        <div class="grafico_setor">
+            <h3>KPI</h3>
+            <div class="containerIndicador">
+                <div class="indicador indicador_um">
+                    <p>Perigo</p>
+                    <span>> 1Cº</span>
+                </div>
+                <div class="indicador indicador_dois">
+                    <p>Perigo</p>
+                    <span>-1Cº até 0Cº</span>
+                </div>
+                <div class="indicador indicador_tres">
+                    <p>Perigo</p>
+                    <span>-8Cº até -2Cº</span>
+                </div>
+                <div class="indicador indicador_quatro">
+                    <p>Perigo</p>
+                    <span>-9Cº até -11Cº</span>
+                </div>
+                <div class="indicador indicador_cinco">
+                    <p>Perigo</p>
+                    <span>< -12Cº</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grafico_linha">
+            <h3>Grafico Setores</h3>
+            <div class="content_chart">
+                <div class="caixaSelect">
+                    <label for="select_chart">Selecionar por Setor</label>
+                    <div id="select_chart" class="select_chart">
+                        <select onchange="buscarMedidas()" id="select_setor">
+                           
+                        </select>
+                        <button>Temperatura Maxima</button>
+                        <button>Temperatura Minima</button>
+                        <button>Amplitude</button>
+                    </div>
+                </div>
+                <div class="canvasGrafico">
+                    <label id="nome_do_setor" for="graphs">Setor Xpto</label>
+                    <div class="graphs">
+                        <div class="grafico">
+                            <canvas style="position: relative; height:60vh; width:50vw" id="myChart3"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTEXTO E GRÁFICOS -->
+        <div class="div_contexto_grafico">
+            <!-- CONTEXTO -->
+
+            <div class="div_principal_contexto">
+                <div class="div_contexto">
+                    <h2>Contexto</h2>
+                    <div class="div_contexto_marcadores">
+        
+                        <div class="div_dupla_marcadores">
+                            <div class="div_forma_contexto_marcador div_marcador_setor">
+                                <span class="contexto_s_titulo">Total de setores</span>
+                                <span class="s_valores">999</span>
+                            </div>
+                            <div class="div_forma_contexto_marcador div_marcador_min">
+                                <span onclick="" class="contexto_s_titulo">Temperatura máxima</span>
+                                <span class="s_valores">-90 °C</span>
+                            </div>
+                        </div>
+                        <div class="div_dupla_marcadores">
+                            <div class="div_forma_contexto_marcador div_marcador_max">
+                                <span class="contexto_s_titulo">Amplitute máxima</span>
+                                <span class="s_valores">-80 °C</span>
+                            </div>
+                            <div class="div_forma_contexto_marcador div_amplitute">
+                                <span class="contexto_s_titulo">Temperatura Miníma</span>
+                                <span class="s_valores">-10 °C</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div_legenda">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="div_espacamento"></div>
+            <!-- GRÁFICOS -->
+            <div class="div_graficos">
+    
+                
+                <div class="div_chart_principal">
+                    <h2>Manutenção</h2>
+                    <div class="div_chart_manutencao">
+                        <div class="div_chart_box">
+                            <h3>Geladeiras Instáveis</h3>
+    
+                            <div class="div_grafico_singular">
+                                <canvas class="chart_manutencao"  id="myChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="div_chart_principal">
+                    <h2>Setores/Geladeiras</h2>
+                    <div class="div_chart_setores">
+                        
+                        <div class="div_chart_box">
+                            <h3>Tipos de Resfriamento</h3>
+    
+                            <div class="div_grafico_singular">
+                                <canvas class="chart_setores" id="myChart1"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="div_chart_principal">
+                    <h2>Medicamentos</h2>
+                    <div class="div_chart_medicamentos">
+            
+                        <div class="div_chart_box">
+                            <h3>Capacidade de Armazenamento</h3>
+                            <div class="div_grafico_singular">
+    
+                                <canvas class="chart_medicamentos" id="myChart2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="assets/js/navbar_dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/usuario.js"></script>
+
+</body>
+</html>
+<script src="js/funcao_dashboard.js"></script>
+
+<script>
+
+    s_nome.innerHTML = sessionStorage.NOME_USUARIO 
+    
+</script>
+<script>
+
+    //CONSTANTE DAS CORES DOS GRÁFICOS 
+    // Isso também é um VETOR
+    const color = [
+        '#e6903a', 
+        '#2866b8'
+    ];
+ 
+
+    // GRÁFICO GELADEIRAS INSTÁVEIS
+    const labels = [
+      'Requer Manutenção',
+      'Não Requer',
+    ];
+  
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Requer',
+        backgroundColor: color,
+        borderColor: 'rgb(255, 255, 255)',
+        data: [20, 15],
+      }
+    ]
+    };
+  
+    const config = {
+      type: 'pie',
+      data: data,
+      options: {
+        responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: false,
+                }
+            }
+      }
+    };
+
+    //GRÁFICO TIPO DE RESFRIAMENTO 
+    const labels1 = [
+      'Temperatura Média -70',
+      'Temperatura Média -5',
+    ];
+  
+   
+    const data1 = {
+      labels: labels1,
+      datasets: [{
+        backgroundColor: color,
+        borderColor: 'rgb(255, 255, 255)',
+        data: [15, 85],
+      }]
+    };
+  
+    const config1 = {
+        type: 'pie',
+        data: data1,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: false,
+                }
+            }
+        },
+      
+    };
+
+    // GRÁFICO CAPACIDADE DE ARMAZENAMENTO
+    const labels2 = [
+      'Medicamentos',
+      'Capacidade Total',
+    ];
+  
+    const data2 = {
+      labels: labels2,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: color,
+        borderColor: 'rgb(255, 255, 255)',
+        data: [43.33, 56.66],
+      }]
+    };
+  
+    const config2 = {
+      type: 'pie',
+      data: data2,
+      options: {
+        responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: false,
+                }
+            }
+      }
+    };
+
+</script>
+
+<script>
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+
+    const myChart1 = new Chart(
+      document.getElementById('myChart1'),
+      config1
+    );
+
+    const myChart2 = new Chart(
+      document.getElementById('myChart2'),
+      config2
+    );
+
+</script>
+
+<script>
+    function mostrarModal(id){
+            const modal = document.getElementById(id);
+            modal.classList.add('mostrar');
+            modal.addEventListener('click', (e) => {
+                if(e.target.id == id){
+                    modal.classList.remove('mostrar')
+                }
+            })       
+    }
+
+    const botaoVacina = document.querySelector('.cadVacina')
+    botaoVacina.addEventListener('click', function() {
+        mostrarModal('modalV')
+    })
+
+    const botaoSetor = document.querySelector('.cadSetor')
+    botaoSetor.addEventListener('click', function() {
+        mostrarModal('modalS')
+    })
+</script>
+

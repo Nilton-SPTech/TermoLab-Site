@@ -1,0 +1,106 @@
+
+.div_container, .div_menu, .div_icons_navbar, .div_icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+/* NAVBAR */
+
+.div_navbar{
+
+    width: 70px;
+    /* width: 300px; */
+    height: 100%;
+    
+    position: fixed;
+    color: var(--branco);
+    font-size: 1.2rem;
+    background-color: var(--navbar-dashboard);
+    z-index: 2;
+
+    transition: width .6s ease;
+}
+
+.div_navbar_expandida{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.div_icon_expandida{
+    width: 90px;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+#div_icon_solo1,
+#div_icon_solo2,
+#div_icon_solo3{
+    transition: display 4s;
+}
+
+#div_icon_conjunto1,
+#div_icon_conjunto2,
+#div_icon_conjunto3{
+    transition: display 4s;
+
+}
+
+
+
+.div_navbar .div_container{
+    gap:20px;
+}
+
+#menu_conjunto{
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.div_menu{
+    width: 100%;
+    height: 10vh;
+    cursor: pointer;
+    background-color: var(--navbar-menu--dashboard);
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+}
+
+.div_icons_navbar{
+
+    margin-top: 30px;
+    gap: 50px;
+}
+
+.div_icon{
+    width: 70px;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+
+.bx-exit{
+    font-size: 30px; 
+    color: rgb(219, 79, 79);
+}
+
+.div_icon_exit{
+    text-align: center;
+
+    padding: 20px 0;
+    cursor: pointer;
+
+    position: absolute;
+    bottom: 20px;
+}
+
+
+
+.div_icon:hover{
+    background-color: var(--azul-claro);
+}

@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    font-family: 'Inter', sans-serif;;
+}
+body{
+    overflow: hidden;
+}
+.header  {
+    margin-right: 100px;
+}
+.navbar {
+
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;  
+    
+}
+ul {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 60px;    
+    font-size: 0.9rem;
+
+    letter-spacing: 2px;
+
+    list-style: none;
+
+}
+
+li {
+    color: white;
+    cursor: pointer;
+    position: relative;
+
+}
+
+li:after{
+    content: '';
+    width:  0%;
+    background-color: var(--branco);
+    height: 3px;
+    border-radius: 20px;
+
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    display: block;
+    transition: all .3s ease-in-out ;
+}
+
+li:hover:after{
+    width: 100%;
+    left: 0;
+}
+
+
+.navbar a {
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+}
+
+
+h2{
+    color: var(--azul-texto);
+    font-size: 2.1rem;
+}
+.img-Bola {
+    position: absolute;
+    height: 900px;
+    top: 0;
+    right: 0;
+    z-index: -2;
+}
+
+.container {
+    margin-top: 30px;
+    display: flex;
+    /* width: 93%; */
+    justify-content: space-between;
+    align-items: center; 
+    
+}
+
+.img-Logo {
+    height: 100px;
+    margin-bottom: 180px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo .logo2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo-linha {
+    width: 60%;
+    border-bottom: #174580 solid 4px;
+    align-self: center;
+    margin-top: -10%;
+}
+
+.logo h3 {
+    margin-top: -100px;
+    /* margin-bottom: 60px; */
+    font-size: 40px;
+    font-weight: 100;
+    /* letter-spacing: 0.26em; */
+}
+
+.logo p {
+    font-size: 30px;
+    font-size: 1rem;
+    text-align: center;
+}
+    
+
+
+.div_localizacao{
+    position: absolute;
+    top: 0;
+    margin: 10px 0;
+}
+
+.div_localizacao .div_container{
+    display: flex;
+    gap: 30px;
+}
+.div_bola{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(179, 179, 179);
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.caixa-formulario {
+    background-color: white;
+    width: 400px;
+    height: 550px;
+    padding: 30px 12px;
+    border-radius: 3px;  
+    margin-right: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h2{
+    margin: 0;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.caixa-formulario button:hover {
+    opacity: 0.8;
+}   
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+label{
+    color: var(--cinza);
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.campo input {
+    padding: 15px;
+    width: 370px;
+    border-radius: 3px;
+    background-color: rgb(226, 226, 226);
+    border: 0px;
+    color: black;
+
+}
+
+.campo2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  
+}
+.campo2 input {
+    padding: 15px;
+    width: 170px;
+    margin: 0 15px;
+    border-radius: 3px;
+    background-color: rgb(226, 226, 226);
+    border: 0px;
+    color: black;
+}
+
+.campo2 label {
+    margin-left: 22px;
+}
+
+.senha {
+    display: flex;
+}
+
+.a_botao {
+    background-color: #358fc4;
+    color: var(--branco);
+    font-weight: bold;  
+
+    width: 250px;
+    height: 45px;
+    margin-top: 20px;
+    border-radius: 3px;
+    border: none;
+    font-size: 1rem;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.a_botao:hover{
+    background-color: #3590c4a2;
+
+}
+
+.a_cadastrar{
+    background-color: #97ED8A;
+    color: var(--preto-texto);
+}
+.a_cadastrar:hover{
+    background-color: #97ed8a9a;
+
+}
+.i_ceta{
+    margin-left: 10px;
+    font-size: 1.3rem;
+}
+.div_termos{
+    margin-top: 20px;
+}
+.span_termos{
+    font-size: 0.7rem;
+}
+
+.validar_senha_forte{
+    display: flex;
+}
+
+.img_traco{
+    width: 15px;
+    margin-right: 3px;
+}
+.forca_validacao{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 13px;
+}
+.separacao{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: 0 10px;
+}

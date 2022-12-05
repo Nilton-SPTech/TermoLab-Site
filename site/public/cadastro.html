@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <link rel="stylesheet" href="assets/css/cadastro.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <title>Cadastro</title>
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">   
+        <div class="navbar">
+            <ul>
+                <li class="li_texto_navbar"><a href="index.html">Início</a></li>
+                <li class="li_texto_navbar"><a href="calcfin.html">Calculadora</a></li>
+                <li class="li_texto_navbar"><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <img src="assets/img/formaLogin.png" alt="" class="img-Bola">
+    
+    <!-- Banner -->
+    <div class="banner">
+        <div class="container">
+            <div class="logo">
+                <div class="logo2"><img src="assets/img/logo.png" alt="" class="img-Logo"></div>
+                <h3>TermoLab</h3>
+                <span class="logo-linha"></span>
+                <p>Bem vindo a sua área de cadastro!</p>
+            </div>
+
+           
+            <!-- FORMULÁRIO INFORMAÇÕES USUARIO -->
+            <div class="caixa-formulario" id="formulario_usuario" style="display: flex;">
+                <div class="div_localizacao">
+                    <div class="div_container">
+                        <div class="div_bola" style="background-color: #174580"></div>
+                        <div class="div_bola"></div>
+                        <div class="div_bola"></div>
+                    </div>
+                </div>
+                <h2>Precisamos de algumas informações suas!</h2>
+                <div class="campo">
+                    <label for="text">Razão Social</label>
+                    <input type="text" id="input_nome" placeholder="Nome da empresa">
+                </div>
+                
+                <div class="campo">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="input_cnpj" maxlength="18" placeholder="99.999.999/0001.99" onkeyup="mascara_cnpj()">
+                </div>
+
+                <div class="senha">
+                    <div class="campo2">
+                        <label for="password" id="label_senha">Senha</label>
+                        <input type="password" onkeyup="validacao_senha_forte()" id="input_senha" placeholder="************">
+                    </div>
+                    <div class="campo2">
+                        <label for="password" id="label_c_senha">Confirmar senha</label>
+                        <input type="password" id="input_c_senha" onkeyup="confirmar_senha()" placeholder="************">
+                    </div>
+                </div>
+                <div class="validar_senha_forte">
+                    <div class="separacao">
+                        <div class="forca_validacao"><img class="img_traco" id="img_traco_1" src="assets/img/traco.png"><p>Pelo menos 6 caracteres</p></div>
+                        <div class="forca_validacao"><img class="img_traco" id="img_traco_2" src="assets/img/traco.png"><p>Conter caracter especial</p></div>
+                    </div>
+                    <div class="separacao">
+                        <div class="forca_validacao"><img class="img_traco" id="img_traco_3" src="assets/img/traco.png"><p>Conter numero</p></div>
+                        <div class="forca_validacao"><img class="img_traco" id="img_traco_4" src="assets/img/traco.png"><p>Conter letra maiúscula</p></div>
+                    </div>
+                    </div>
+                <div class="cadastrar">
+                    <a  class="a_botao" onclick="ir_endereco()">
+                        Próximo passo
+                        <i class='bx bx-right-arrow-alt i_ceta'></i> 
+                    </a>
+                </div>
+                <span id="span_erro" style="color: red; margin: 0; height: 0;"></span>
+            </div>
+
+            <!-- FORMULÁRIO DE ENDEREÇO -->
+            <div class="caixa-formulario formulario_endereco" id="formulario_endereco" style="display: none;">
+                
+                <div class="div_localizacao">
+                    <div class="div_container">
+                        <div class="div_bola"></div>
+                        <div class="div_bola" style="background-color: #174580"></div>
+                        <div class="div_bola"></div>
+                    </div>
+                </div>
+                <h2>Informe seu endereço!</h2>
+                <div class="campo">
+                    <label for="text">CEP</label>
+                    <input type="text" id="input_cep" placeholder="00000-000" maxlength="10" onkeyup="cep_mascara()">
+                </div>
+                <div class="campo">
+                    <label for="logradouro">Logradouro</label>
+                    <input type="text" id="input_logradouro" placeholder="R. xxxxxxx">
+                </div>
+                <div class="campo">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="input_bairro" placeholder="xxxxxxxxx">
+                </div>
+                <div class="campo">
+                    <label for="numero">Número e complemento</label>
+                    <input type="text" id="input_complemento" placeholder="0000">
+                </div>
+                <div class="div_passo">
+                    <a  class="a_botao" onclick="ir_contato()">
+                        Próximo passo
+                        <i class='bx bx-right-arrow-alt i_ceta'></i> 
+                    </a>
+
+                    <a  class="a_botao" onclick="voltar_usuario()">
+                        <i class='bx bx-left-arrow-alt i_ceta' ></i>
+                        Voltar passo
+                    </a>
+                </div>
+                <span id="span_erro_endereco" style="color: red;margin-bottom: 10px; height: 0;"></span>
+            </div>
+
+
+            <!-- FORMULÁRIO DE CONTATO -->
+            <div class="caixa-formulario formulario_contato" id="formulario_contato" style="display: none;">
+                
+                <div class="div_localizacao">
+                    <div class="div_container">
+                        <div class="div_bola"></div>
+                        <div class="div_bola"></div>
+                        <div class="div_bola" style="background-color: #174580;"></div>
+                    </div>
+                </div>
+                
+                <h2>Suas informações de contato</h2>
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="input_email" placeholder="empresa@outlook.com">
+                </div>
+                <div class="campo">
+                    <label for="telefone">Telefone (celular)</label>
+                    <input type="text" id="input_telefone_celular" placeholder="99 99999-9999" maxlength="13" onkeyup="cel_mascara()">
+                </div>
+                <div class="campo">
+                    <label for="telefone">Telefone (fixo)</label>
+                    <input type="text" id="input_telefone_fixo" placeholder="99 9999-9999" maxlength="12" onkeyup="telFixo_mascara()">
+                </div>
+                <div class="div_termos"> 
+                    <input onclick="termos_aceito()" id="check_termos" type="checkbox">
+                    <span id="span_termos" class="span_termos">
+                        Ao clicar aqui, você aceita nossos - Termos e Condições
+                    </span>
+                </div>
+                <div class="div_passo">
+                    <a  class="a_botao a_cadastrar" onclick="cadastrar()">
+                        Cadastrar  
+                    </a>
+
+                    <a  class="a_botao" onclick="voltar_endereco()">
+                        <i class='bx bx-left-arrow-alt i_ceta' ></i>
+                        Voltar passo
+                    </a>
+                </div>
+                <span id="span_erro_contato" style="color: red;margin-bottom: 10px; height: 0;"></span>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script src="js/funcoesCadastro.js"></script>
+    <script src="js/cadastroUsuario.js"></script>
+    <script src="assets/js/mascara.js"></script>
+</body>
+</html>
+
+
+<script>
+  
+    // FUNÇÕES PARA INFORMAÇÕES DO USUARIO
+
+    function ir_endereco(){
+
+        var validacao = input_nome.value == "" || input_cnpj.value == "" || input_senha.value == "" || input_c_senha.value == ""
+        span_erro.style.opacity = 1;
+        span_erro_endereco.style.opacity = 0;
+        var senha = input_senha.value
+        var validar_senha_forte = senha.match(/[0-9]/) && senha.match(/[A-Z]/) && senha.match(/[!\@\#\$\%\&\*]/) && senha.length >= 6
+
+        if(validar_senha_forte && !validacao && confirmar_senha()){
+            formulario_usuario.style.display = "none"
+            formulario_endereco.style.display = "flex"
+        }
+        else{
+
+            span_erro.innerHTML = "* Preencha todos os campos para prosseguir"
+
+            setTimeout(function() {
+                span_erro.style.opacity = 0;
+                }, 3000)
+        }
+
+        // COLOCANDO OS INPUTS PARA A COR CINZA DNV
+        label_senha.style.color = "rgb(75, 75, 75)"
+        input_senha.style.background = " rgb(226, 226, 226)";
+
+        label_c_senha.style.color = "rgb(75, 75, 75)"
+        input_c_senha.style.background = " rgb(226, 226, 226)";
+    }
+
+    function confirmar_senha(){
+        var senha = input_senha.value
+        var c_senha = input_c_senha.value
+
+
+        if(c_senha != senha){
+            input_c_senha.style.background = "#D91A2A"
+            label_c_senha.style.color = "red"
+
+            label_senha.style.color = "rgb(75, 75, 75)"
+            input_senha.style.background = " rgb(226, 226, 226)";
+
+            return(false)
+
+        }
+        else{
+            input_c_senha.style.background = "#97ED8A"
+            label_c_senha.style.color = "green"
+
+            input_senha.style.background = "#97ED8A"
+            label_senha.style.color = "green"
+
+            return(true)
+
+        }
+    }
+
+
+    // FUNÇÕES PARA O ENDEREÇO
+
+    function validacao_endereco(){
+        var cep = input_cep.value
+        var logradouro = input_logradouro.value
+        var bairro = input_bairro.value
+        var complemento = input_complemento.value
+
+        if(cep == "" || logradouro == "" || bairro == "" || complemento == ""){
+            return(false)
+        }
+        else{
+            return(true)
+        }
+    }
+    function ir_contato(){
+        span_erro_endereco.style.opacity = 1;
+
+
+        if(validacao_endereco()){
+            formulario_endereco.style.display = "none"
+            formulario_contato.style.display = "flex"
+        }
+        else{
+            span_erro_endereco.innerHTML = "* Preencha todos os campos para prosseguir"
+
+            setTimeout(function() {
+                span_erro_endereco.style.opacity = 0;
+                }, 3000)
+        }
+    }
+    function voltar_usuario(){
+            formulario_usuario.style.display = "flex"
+            formulario_endereco.style.display = "none" 
+            span_erro.style.opacity = 0;
+    }
+
+
+    // FUNCÕES DOS CONTATOS
+
+    function termos_aceito(){
+
+        if(check_termos.checked){
+            span_termos.style.color = "green"
+        }
+        else{
+            span_termos.style.color = "black"
+
+        }
+    }
+    function validacao_contato(){
+        var email = input_email.value
+        var celular = input_telefone_celular.value
+        var fixo = input_telefone_fixo.value
+
+        if(email =="" || celular == "" ||fixo == ""){
+            return(false)
+        }
+        else{
+            return(true)
+        }
+
+    }
+    function voltar_endereco(){
+        formulario_endereco.style.display = "flex"
+        formulario_contato.style.display = "none"
+    }
+
+</script>
+
+<script>
+    function validacao_senha_forte(){
+        var senha = document.getElementById('input_senha');
+        var uper = document.getElementById('img_traco_4');
+        var num = document.getElementById('img_traco_3');
+        var tamanho = document.getElementById('img_traco_1');
+        var especial = document.getElementById('img_traco_2');
+
+        if(senha.value.match(/[0-9]/)){
+            num.src = "assets/img/check.png"
+        
+        }else{
+            num.src = "assets/img/traco.png"
+        }
+
+        if(senha.value.match(/[A-Z]/)){
+            uper.src = "assets/img/check.png"
+        }else{
+            uper.src = "assets/img/traco.png"
+        }
+
+        if(senha.value.match(/[!\@\#\$\%\&\*]/)){
+            especial.src = "assets/img/check.png"
+        }else{
+            especial.src = "assets/img/traco.png"
+        }
+
+        if(senha.value.length < 6){
+            tamanho.src = "assets/img/traco.png"
+        }else{
+            tamanho.src = "assets/img/check.png"
+        }
+
+
+    }
+
+    
+</script>
+<script>
+    function cadastrar() {
+
+//Recupere o valor da nova input pelo nome do id
+// Agora vá para o método fetch logo abaixo
+// PRIMEIRO FORMULÁRIO
+var nomeVar = document.getElementById('input_nome');
+var cnpjVar = document.getElementById('input_cnpj'); 
+var senhaVar = document.getElementById('input_senha');
+
+
+var cepVar = document.getElementById('input_cep');
+var logradouroVar = document.getElementById('input_logradouro'); 
+var bairroVar = document.getElementById('input_bairro');
+var complementoVar = document.getElementById('input_complemento');
+
+
+// ÚLTIMO FORMULÁRIO
+var emailVar = document.getElementById('input_email');
+var celularVar = document.getElementById('input_telefone_celular'); 
+var telefoneVar = document.getElementById('input_telefone_fixo'); 
+
+/*  if (!validarCampos(nomeVar, cnpjVar, senhaVar, cepVar, logradouroVar, bairroVar, complementoVar, emailVar, celularVar, telefoneVar )) {
+    return false;
+}
+else {
+    // setInterval(sumirMensagem, 5000)
+} */
+
+// Enviando o valor da nova input
+fetch("/usuarios/cadastrar", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar.value,
+        senhaServer: senhaVar.value,
+        cnpjServer: cnpjVar.value, 
+
+        cepServer: cepVar.value, 
+        logradouroServer: logradouroVar.value, 
+        bairroServer: bairroVar.value, 
+        complementoServer: complementoVar.value, 
+
+        emailServer: emailVar.value,
+        celularServer: celularVar.value, 
+        telefoneServer: telefoneVar.value
+    })
+}).then(function (resposta) {
+
+    console.log("resposta: ", resposta);
+
+    if (resposta.ok) {
+       
+
+        // setTimeout(() => {
+        window.location = "login.html";
+        // }, "2000")
+
+        
+    } else {
+        throw ("Houve um erro ao tentar realizar o cadastro!");
+    }
+}).catch(function (resposta) {
+    console.log(`#ERRO: ${resposta}`);
+});
+
+return false;
+}
+
+</script>

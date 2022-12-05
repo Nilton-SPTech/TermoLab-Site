@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+
+    <!-- CONFIGRUANDO AMBIENTE PARA USAR O SWIPER.JS -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+
+    <!-- BIBLIOTECA DE ICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+
+    <!-- ESTILO RESET -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- ESTILO DA INDEX   -->
+    <link rel="stylesheet" href="assets/css/index.css">
+
+
+    <title>TermoLab</title>
+
+
+
+</head>
+<body>
+    
+    <!-- HEADER E NAVBAR -->
+    <header>
+        <div class="div_container">
+            <div class="div_logo">
+                <img src="assets/img/logo.png" alt="Logo TermoLab" class="img_logo">
+                <span>TermoLab</span>
+            </div>
+            <div class="div_navbar">
+                <ul>
+                    <li class="li_texto_navbar">
+                        <a href="quemsomos.html">Quem Somos</a>
+                    </li>
+                    <li class="li_texto_navbar">
+                        <a href="calcfin.html">Calculadora</a>
+                    </li>
+                    <li class="li_texto_navbar">
+                        <a href="contato.html">Contato</a>
+                    </li>
+                    <span class="span_barra">|</span>
+                    <li class="li_texto_navbar"><b>
+                        <a href="login.html">Login</a>
+                    </b></li>
+                    <li class="li_cadastro"><b>
+                        <a href="cadastro.html">Cadastre-se</a>
+                    </b></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- BANNER INDEX -->
+    <div class="div_main">
+        <img src="assets/img/img_index/forma-index.png" class="img_forma">
+        <div class="div_container">
+            <div class="div_texto">
+                <h2>TermoLab</h2>
+                <p>Temos como objetivo auxiliar no controle e na gestão de medicações sensíveis à temperatura, ajudando a diminuir perdas e desperdícios.</p>
+            </div>
+            <div class="div_img_doutor">
+                <div class="div_bola">
+                    <img src="assets/img/img_index/bola1.png" class="img_bola img_bola1">
+                    <img src="assets/img/img_index/bola2.png" class="img_bola img_bola2">
+                    <img src="assets/img/img_index/bola3.png" class="img_bola img_bola3">
+                </div>
+                <div class="div_doutor">
+                    <img src="assets/img/img_index/doutor.png" class="img_doutor">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BANNER CARROSSEL -->
+    <div class="div_banner_carrossel">
+        <img src="assets/img/img_index/fundo_carrossel1.png" class="img_fundo_carrossel forma1">
+        <img src="assets/img/img_index/fundo_carrossel2.png" class="img_fundo_carrossel forma2">
+
+        <!-- INICIO DO EFEITO DE CARROSSEL -->
+        <div class="swiper mySwiper">
+
+            <div class="swiper-wrapper div_container_carrossel">
+
+                <div class="swiper-slide">
+                    <div class="div_card missao">
+                        <div class="div_titulo">
+                            <img src="assets/img/img_index/missao.png" class="img_icon">
+                            <h3>MISSÃO</h3>
+                        </div>
+                        <div class="div_conteudo">
+                            <p>Prover soluções cada vez mais completas e integradas para a gestão de medicamentos e o bem-estar das pessoas, com excelência, humanidade e sustentabilidade.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide ">
+                    <div class="div_card visao">
+                        <div class="div_titulo">
+                            <img src="assets/img/img_index/visao.png" class="img_icon">
+                            <h3>VISÃO</h3>
+                        </div>
+                        <div class="div_conteudo">
+                            <p>Gestão hospitalar para garantir a integridade de produtos medicinais. Expandir o projeto para ajudar todo o Brasil.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="div_card valor">
+                        <div class="div_titulo">
+                            <img src="assets/img/img_index/valores.png" class="img_icon">
+                            <h3>VALORES</h3>
+                        </div>
+                        <div class="div_conteudo">
+                            <p style="text-align: center;">Excelência, Respeito, Interdependência, Solidariedade, Voltado ao Cliente, Integridade, Inovação e Entusiasmo.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- ELEMENTOS DE HOVER DO CARROSSEL -->
+            <!-- ELEMENTO DAS SETAS LATERAIS PARA PASSAR O CARROSSEL -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- ELEMENTO DE PAGINAÇÃO -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+
+    <!-- BANNER CALCULADORA FINANCEIRA -->
+    <div class="div_calculadora_financeira">
+        <div class="linha"></div>
+        <div class="div_container">
+
+            <div class="div_texto_simulador">
+                <div class="div_titulo_simulador">
+                    <h3>Simulador Financeiro</h3>
+                </div>
+                <div class="div_paragrafo_simulador">
+                    <p>A calculadora financeira vai te ajudar a ter noção dos seus gastos e seu possível lucro, é necessário que você somente insira com qual vacina está trabalhando, a quantidade por lote e por fim a quantidade em que foi comprada por você. Com base nesses dados conseguimos fazer um cálculo em tempo real e te ajudar da melhor forma possível! </p>
+                </div>
+            </div>
+
+            <div class="div_botao">
+                <a href="calcfin.html" class="a_simulador">
+                    SIMULE AQUI
+                    <i class='bx bx-right-arrow-alt'></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="div_footer">
+        <div class="div_container">
+            <div class="div_logo">
+                <img src="assets/img/logo.png">
+                <span>TermoLab</span>
+            </div>
+            <div class="div_social">
+                <a href=""><img src="assets/img/facebook.png"></a>
+                <a href=""><img src="assets/img/instagram.png"></a>
+                <a href=""><img src="assets/img/linkedin.png"></a>
+                <a href=""><img src="assets/img/github.png"></a>
+                <a href=""><img src="assets/img/twitter.png"></a>
+                <a href=""><img src="assets/img/email.png"></a>
+                <a href=""><img src="assets/img/whatsapp.png"></a>
+            </div>
+        </div>
+        <div class="div_contato">
+            <p>Lorem ipsum - 19.888.777/0001-10</p>
+            <p>R. Avenida Paulista, 5102 - Bairro, São Paulo - SP, 04050-000</p>
+        </div>
+    </div>
+
+
+    <!-- CONFIGURANDO O AMBIENTE PARA USAR O SWIPER.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+</body>
+</html>
+
+
+<script>
+    // BIBLIOTECA DE JAVASCRIPT SWIP.JS
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow", // EFEITO COVERFLOW É O EFEITO QUE FICA 3D
+      grabCursor: true, //PASSANDO PARA O LADO USANDO O CURSOR
+      centeredSlides: true, //CENTRALIZANDO OS CARDS
+      slidesPerView: "auto", //MOSTRANDO OS CARDS UM DO LADO DO OUTRO
+      spaceBetween: 40, //ESPAÇO ENTRE OS CARDS
+
+    //EDITANDO ELEMENTOS DO CARROSSEL   
+      coverflowEffect: { //FAZENDO A ESTILIZAÇÃO DO EFEITO COVERFLOW
+        rotate: 50, // ROTAÇÃO DOS CARDS
+        stretch: 20, //O QUANTO OS ELEMENTOS FICAM PRÓXIMOS
+        depth: 50, //ENCLINAÇÃO DOS CARDS
+        modifier: 1,
+        slideShadows: false , //SOMBRA DOS CARDS  
+      },
+      pagination: { // PAGINAÇÃO DOS CARDS, FAZ A CONTAGEM DE QUAL CARD ESTÁ
+        el: ".swiper-pagination", //ESTILO DE PAGINAÃO DE BOLINHA
+      },
+      navigation: { //NAVEGAÇÃO DOS CARDS, AQUELAS DOIS INDICADORES NO CANTO
+        nextEl: ".swiper-button-next", //NAVEGAÇÃO PARA A ESQUERDA - PRÓXIMO
+        prevEl: ".swiper-button-prev", //NAVEGAÇÃO PARA A DIREITA - VOLTAR
+      },
+    });
+  </script>

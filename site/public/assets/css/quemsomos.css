@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+
+
+
+:root{
+    --inter: 'Inter', sans-serif;
+    --azul-texto: #174580;
+    --preto-texto: #292929;
+    --azul-claro: #70C2E8;
+    --branco: #ffff;
+}
+
+/* Estilização de forma geral */
+*{
+    font-family: var(--inter);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+header{
+    padding: 0 45px 0 100px;
+    margin-top: 10px;
+}
+
+.div_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.div_logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.div_logo > img{
+    width: 50px;
+    height: 55px;
+}
+
+.div_logo span{
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--azul-texto);
+}
+
+
+ul{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+
+    font-size: 0.9rem;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+    /* margin-top: -10px; */
+
+}
+
+a{
+    text-decoration: none;
+    color: var(--branco);
+}
+
+.li_cadastro{
+    background-color: rgba(0, 0, 0, 0.384);
+    padding: 15px;
+    border-radius: 5px;    
+    transition: all .2s ease;
+}
+
+.li_cadastro:hover{
+    background-color: rgba(41, 41, 41, 0.384);
+
+}
+
+.span_barra{
+    font-size: 25px;
+}
+
+.li_texto_navbar{
+    display: inline-block;
+    position: relative;
+}
+
+li{
+    position: relative;
+}
+
+/* CRIANDO O HOVER */
+/* FAZENDO O TRAÇO QUE FICA EM BAIXO */
+
+.li_texto_navbar_selecionado:after{
+    content: '';
+    width:  100%;
+    background-color: var(--branco);
+    height: 3px;
+    border-radius: 20px;
+
+    position: absolute;
+    bottom: -10px;
+    display: block;
+    transition: all .2s ease-in-out ;
+}
+
+
+.li_texto_navbar:after{
+    content: '';
+    width:  0%;
+    background-color: var(--branco);
+    height: 3px;
+    border-radius: 20px;
+
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    display: block;
+    transition: all .2s ease-in-out ;
+}
+.li_texto_navbar:hover:after{
+    width: 100%;
+    left: 0;
+}
+
+/* BANNER */
+.img_forma{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: -1;
+
+    width: 900px;
+}
+
+.img_forma2{
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: -1;
+
+    width: 700px;
+}
+.img_forma3{
+    position :absolute;
+    bottom: -500px;
+    left: 50px;
+    z-index: -1;
+
+    width: 700px;
+}
+
+/* BANNER - MAIN */
+
+
+.div_main .div_container{
+    justify-content: space-between;
+    height: 600px;
+    gap: 10px;
+}
+.img_doutor{
+    position: relative;
+    top: 30px;
+    left: 70px;
+    width: 650px;
+    object-fit: fill;
+}
+.img_doutor2{
+    position: relative;
+    right: 330px;
+    bottom: 500px;
+    width: 50px;
+    object-fit: fill;
+    animation: balao_flutuando0 9.8s infinite;
+}
+@keyframes balao_flutuando0 {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+.img_doutor3{
+    position: relative;
+    right:220px;
+    bottom: 500px;
+    width: 50px;
+    object-fit: fill;
+    animation: balao_flutuando 9.8s infinite;
+}
+@keyframes balao_flutuando {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+.img_group_first{
+    position: absolute;
+    width: 500px;
+    object-fit: fill;
+    z-index: 0;
+}
+.img_group_second{
+    position: relative;
+    width: 150px;
+    object-fit: fill;
+    z-index: 1;
+    bottom: 380px;
+    right: 240px;
+    animation: alvo 8.8s infinite;
+}
+@keyframes alvo {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+.img_group_3{
+    position: relative;
+    width: 90px;
+    object-fit: fill;
+    z-index: 1;
+    bottom: 280px;
+    right: 230px;
+    animation: alvo 8.2s infinite;
+}
+.img_group_4{
+    position: relative;
+    width: 90px;
+    object-fit: fill;
+    z-index: 1;
+    bottom: 220px;
+    right: 725px;
+    animation: alvo 9.2s infinite;
+}
+.img_group_5{
+    position: relative;
+    width: 70px;
+    object-fit: fill;
+    z-index: 1;
+    bottom: 110px;
+    right: 830px;
+    animation: alvo 9s infinite;
+}
+.img_group_6{
+    position: relative;
+    width: 70px;
+    object-fit: fill;
+    z-index: 1;
+    bottom: 120px;
+    right: 460px;
+    animation: alvo 8.4s infinite;
+}
+.img_group_7{
+    position: relative;
+    width: 80px;
+    z-index: 1;
+    object-fit: fill;
+    bottom: 150px;
+    right: 500px;
+    animation: alvo 9.2s infinite;
+}
+.img_group_last{
+    position: relative;
+    width: 500px;
+    top: 10px;  
+    left: 30px;
+    object-fit: fill;
+    z-index: 1;
+}
+
+.div_texto{
+    
+    width: 600px;
+    height: 500px;
+    padding-top: 100px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+}
+.div_texto .div_cit{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: small;
+}
+.div_texto2{
+    
+    width: 600px;
+    height: 500px;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+
+}
+
+.div_texto2 p{
+    font-size: 1.0rem;
+    letter-spacing: 2px;
+    color: var(--preto-texto);
+}
+
+.div_texto h2{
+    font-size: 3.0rem;
+    color: var(--azul-texto);
+}
+
+.div_texto p{
+    font-size: 1.0rem;
+    letter-spacing: 2px;
+    color: var(--preto-texto);
+}
+/* FOOTER */
+.div_footer{
+    margin-top: 20px;
+    padding-top: 20px;
+    background-image: linear-gradient(to bottom, white 20%, rgb(199, 199, 199));
+}
+
+
+.div_footer > .div_container{
+    
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.div_logo{
+    margin-right: 20px;
+}
+.div_logo span{
+    font-size: 1rem;
+}
+.div_logo > img{
+    width: 50px;
+}
+
+
+.div_social > a img{
+    width: 30px;
+    margin-right: 5px;
+}
+.div_contato{
+    padding-bottom: 20px;
+}
+.div_contato p{
+    margin: 0;
+    text-align: center;
+    font-size: .6rem;
+    color: var(--azul-texto);
+}
+
+.div_embaxio{
+    margin-top: 100px;
+    padding: 0 50px;
+}

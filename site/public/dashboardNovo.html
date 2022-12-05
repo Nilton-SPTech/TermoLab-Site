@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+<!-- <<<<<<< HEAD -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+<!-- ======= -->
+
+    <link rel="stylesheet" href="./assets/css/reset.css">
+<!-- >>>>>>> 221133f43e461bb598375bcb5353fcde20f84972 -->
+    <link rel="stylesheet" href="assets/css/dashboardNovo.css">
+    <link rel="stylesheet" href="./assets/css/dashboardLEFT.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="navbarDash">
+            <div class="logo">
+                <img src="">
+                <h1>Termo<span>Lab</span></h1>
+            </div>
+            <div class="botoes">
+                <button>Dashboard</button>
+                <button>Avisos</button>
+                <button id="btn-1">Log Out</button>
+            </div>
+        </div>
+        <div class="conteudo">
+            <div class="headerDash">
+                <p id="nomeUsuario">Fernanda</p>
+                <div class="botoesHeader">
+                    <button>Cadastrar Vacina</button>
+                    <button>Cadastrar Setor</button>
+                </div>
+            </div>
+            <div class="vacinas">  
+                <h3>Vacinas</h3>          
+                <div class="fileira">
+                    <div class="vacina"></div>
+                    <div class="vacina"></div>
+                    <div class="vacina"></div>
+                    <div class="vacina"></div>
+                </div>
+                <div class="fileira">
+                    <div class="vacina"></div>
+                    <div class="vacina"></div>
+                    <div class="vacina"></div>
+                    <div class="vacina"></div>
+                </div>
+            </div>
+            <div class="kpi">
+
+                
+                <div class="legenda"><h3>KPI</h3><p>Índice de temperaturas: <span class="iVermelho">Perigo < 22Cº</span><span class="iAmarelo"> Alerta: 22Cº - 17Cº</span><span class="iVerde"> Ideal: 16Cº - 5Cº</span><span class="iAmarelo"> Alerta: 4Cº - 0Cº </span><span class="iVermelho">Perigo: > 0Cº</span></23C> </p></div>
+                <div class="caixa">
+                    <div class="medida"></div>
+                    <div class="medida"></div>
+                    <div class="medida"></div>
+                    <div class="medida"></div>
+                </div>
+            </div>
+            <div class="setores">
+                <div class="options">
+
+                </div>
+                <div class="grafico">
+                    <h3>Gráficos</h3>
+                    <canvas></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+</html>

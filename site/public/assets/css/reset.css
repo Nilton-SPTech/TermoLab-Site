@@ -1,0 +1,25 @@
+:root{
+    --inter: 'Inter', sans-serif;
+    --azul-texto: #174580;
+    --preto-texto: #292929;
+    --azul-claro: #70C2E8;
+    --branco: #ffff;
+    --cinza: #4b4b4b;
+
+    --background-dashboard: #f1f1f1; 
+    --header-dashboard: #ECECEC; 
+
+    --navbar-dashboard: #174580;
+    --navbar-menu--dashboard: #0e3363;
+
+
+}
+
+/* Estilização de forma geral */
+*{
+    font-family: var(--inter);
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+
+
+}

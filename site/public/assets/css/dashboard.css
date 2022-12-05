@@ -1,0 +1,628 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 265vh;
+}
+
+
+
+/* MAIN */
+.div_main{
+    margin-left: 70px;
+    height: 100%;
+    background-color: var(--background-dashboard);
+}
+
+/* HEADER - MAIN */
+
+.div_header{
+    width: 100%;
+    height: 10vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%); */
+}
+
+.div_usuario{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    
+    height: 100%;
+    padding-left: 30px;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+}
+
+/* .botoes_header{
+    margin-right: 25px;
+} */
+
+.botoes_header button{
+    height: 5vh;
+    width: 15vw;
+    background-color: #174580;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin-right: 25px;
+    cursor: pointer;
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+}
+
+.botoes_header button:hover{
+    transform: scale(105%);
+    transition: 0.5s ease;
+}
+
+button {
+    cursor: pointer;
+}
+/* Modal de cadastro */
+
+.modal_cadastrar_vacina{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.6);
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal_cadastrar_setor{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.6);
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.caixaFormulario{
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border-radius: 5px;
+    animation: modal 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.caixaFormulario h3{
+    font-size: 2rem;
+}
+
+.caixaFormulario span{
+    height: 4px;
+    width: 100%;
+    background-color: #0e3363;
+}
+
+.caixaFormulario select{
+    width: 70%;
+    height: 30px;
+    outline: none;
+    border-radius: 5px;
+    background-color: #dfdfdf;
+    border: none;
+    padding: 0 5px;
+}
+.caixaFormulario input{
+    width: 70%;
+    height: 30px;
+    outline: none;
+    border-radius: 5px;
+    background-color: #dfdfdf;
+    border: none;
+    padding: 0 5px;
+}
+.caixaFormulario button{
+    width: 70%;
+    height: 40px;
+    color: white;
+    background-color: #174580;
+    border-radius: 5px;
+    border: none;
+}
+.bVacina{
+    margin-top: 50px;
+}
+.bSetor{
+    margin-top: 120px;
+}
+.caixaFormulario label{
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+.mostrar{
+    display: flex;
+    opacity: 1;
+}
+@keyframes modal {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+.grafico_setor{
+    margin-left: 60px;
+    width: 85vw;
+    height: 35vh;
+    border-radius: 3px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: white;
+    
+}
+
+.grafico_setor h3 {
+    font-size: 20px;
+}
+
+.containerIndicador{
+    display: flex;
+    flex-direction: row;
+    /* gap: 50px; */
+    justify-content: space-between;
+    width: 82vw;
+    height: 100%;
+    padding: 0px 15px 0px 15px;
+}
+
+.indicador{
+    width: 10vw;
+    height: 20vh;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 4px solid rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+    gap: 10px;
+    transition: 0.5s ease-in-out;
+}
+.indicador p{
+    color: white;
+    font-size: 1rem;
+    margin: 0px;
+}
+.indicador span{
+    color: white;
+    font-size: 1rem;
+}
+
+.indicador_um{
+    background-color: rgb(240, 59, 59);
+    border-radius: 5px;
+}
+
+.indicador_dois{
+    background-color: #e6903a;
+    border-radius: 5px;
+}
+
+.indicador_tres{
+    background-color: #0e3363;
+    border-radius: 5px;
+}
+
+.indicador_quatro{
+    background-color: #e6903a;
+    border-radius: 5px;
+}
+
+.indicador_cinco{
+    background-color: rgb(240, 59, 59);
+    border-radius: 5px;
+}
+
+.indicador_um:hover, .indicador_dois:hover, .indicador_tres:hover, .indicador_quatro:hover, .indicador_cinco:hover {
+    cursor: pointer;
+    transform: scale(110%);
+}
+
+/* KPI */
+
+.div_kpi{
+    margin-left: 60px;
+    margin-top: 25px;
+    width: 1160px;
+    /* height: 33vh; */
+    border-radius: 3px;
+    background-color: white;
+    padding: 10px;
+}
+
+.div_kpi .div_container{
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.div_vacina{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--header-dashboard);
+    cursor: pointer;
+    border-radius: 3px;
+    width: 20vw;
+    height: 25vh;
+    /* padding: 10px; */
+    background-color: white;
+    /* margin-top: 10px; */
+    /* margin-left: 5px; */
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+    transition: transform .2s ;
+}
+
+.div_vacina:hover{
+    transform: scale(105%);
+}
+
+
+.div_nome_vacina{
+    white-space: nowrap;
+    /* margin-right: 20px; */
+    margin-left: 10px;
+}
+.div_nome_vacina span{
+    font-size: 100%;
+    font-weight: normal;
+    width: 50px;
+} 
+
+.div_marcadores{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    
+}
+
+
+.div_forma_marcador{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    margin: 5px;
+
+    text-align: center;
+    height: 10vh;
+    width: 5vw;
+    /* margin: 3px; */
+    border-radius: 3px;
+    color: var(--branco);
+
+    transition:transform .2s ;
+}
+
+.div_forma_marcador:hover{
+    transform: scale(105%);
+}
+
+.s_titulo{
+    font-size: 11px;
+    font-family: sans-serif;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.div_marcador_setor{
+    background-color: #174580;
+}
+
+.div_marcador_min{
+    background-color: #0e3363;
+}
+
+.div_marcador_max{
+    background-color: #e6903a;
+}
+
+.div_amplitute{
+    background-color: #2866b8;
+}
+
+
+/* CONTEXTO E GRÁFICOS - MAIN */
+
+.div_contexto {
+    width: 100%;
+    height: 100%;
+}
+
+.div_contexto_grafico{
+    display: flex;
+    /* margin-top: 15vw; */
+    /* margin-left: 14vh; */
+    /* justify-content: space-around; */
+    align-items: center;
+    /* width: 84vw;
+    height: 50vh; */
+    position: relative;
+    gap: 2px;
+    justify-content: center;
+
+    width: 1160px;
+    height: 55vh;
+    border-radius: 3px;
+    background-color: white;
+    margin-left: 60px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.div_principal_contexto{
+    display: flex;
+ 
+    /* height: 100%; */
+
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    
+}
+
+/* .div_espacamento{
+    width: 300px;
+    height: 450px;
+} */
+
+.div_contexto h2{
+    font-size: 2.2rem;
+    font-weight: normal;
+    color: #979797;
+}
+.div_contexto_marcadores{
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+    margin-bottom: 2px;
+    
+}
+.div_forma_contexto_marcador{
+    width: 8vw;
+    height: 18vh;
+    color: var(--branco);
+    text-align: center;
+    font-size: 0.2rem;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+}
+
+.contexto_s_titulo{
+    display: block;
+    font-size: .5rem;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+.s_valores{
+    font-size: 1.5rem;
+}
+.div_dupla_marcadores{
+    display: flex;
+    gap: 25px;
+}
+
+
+/* GRÁFICOS */
+
+.div_chart_principal{
+    text-align: center;
+    /* box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%); */
+}
+
+.div_chart_principal h2{
+    font-size: 1.7rem;
+    font-weight: normal;
+    color: #979797;
+}
+.div_graficos{
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    margin-left: 10px;
+    gap: 10px;
+    /* box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%); */
+}
+
+.div_chart_box{
+    width: 20vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+    border-radius: 5px;
+    background-color: var(--header-dashboard);
+    text-align: center;
+}
+.div_chart_box h3{
+    font-weight: normal;
+    color: #979797;
+    font-size: 15px;
+}
+.div_grafico_singular{
+    width: 200px;
+    height: 200px;
+}
+
+.menu_conjunto {
+    display: flex;
+    align-items: center;
+}
+
+.div_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixaSelect{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin: 0 10px; */
+    /* width: 20vw; */
+    height: 100%;
+    width: 20vw;
+    /* box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%); */
+}
+
+.content_chart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* margin-top: 10px; */
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    /* box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%); */
+    /* gap: 10px; */
+    /* padding: 0px 10px 0px 10px; */
+}
+
+.content_chart label{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.select_chart{
+    width: 15vw;
+    height: 34vh;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+}
+
+.select_chart.caixa-margim{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+}
+
+.select_chart select{
+    width: 13vw;
+    height: 4vh;
+    margin-top: 15px;
+    background-color: #2866b8;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    text-align: center;
+    outline: none;
+    color: #f1f1f1;
+    cursor: pointer;
+}
+
+.select_chart select:focus{
+    width: 13vw;
+    height: 4vh;
+    margin-top: 15px;
+    background-color: #2866b8;
+    border: none;
+    border-radius: 5px 5px 0px 0px;
+    font-size: 13px;
+    text-align: center;
+    outline: none;
+    color: #f1f1f1;
+    cursor: pointer;
+}
+
+.select_chart button{
+    width: 13vw;
+    height: 4vh;
+    /* margin-top: 15px; */
+    background-color: #174580;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.grafico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60vw;
+    height: 70vh;
+    background-color: white;
+    border-radius: 5px 0px 5px 5px;
+    padding: 10px 0px 10px 0px;
+    box-shadow: 0 20px 50px 3px rgb(47 47 47 / 11%);
+}
+
+.grafico canvas{
+    width: 900px;
+}
+
+.canvasGrafico{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* margin: 0 10px; */
+    width: 65vw;
+    height: 100%;
+}
+.grafico_linha{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 100%; */
+    /* height: 90vh; */
+    background-color: white;
+    margin-left: 60px;
+    margin-top: 25px;
+    width: 1160px;
+    height: 90vh;
+    border-radius: 3px;
+    /* margin-top: 20px; */
+}
+
+.grafico_linha h3{
+    font-size: 20px;
+}
+
+.containerMensagem {
+    width: 20vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.containerMensagem label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+    outline: none;
+    font-family:'Inter', sans-serif;
+}
+
+body{
+    margin: auto;
+    /* overflow: hidden; */
+    
+}
+
+img {
+    width: 900px;
+    margin-top: 5px;
+}
+
+.container{
+    margin-top: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 45px 0 100px;
+}
+
+.divHeader > .container{
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+.navbar{
+    width: 100vw;
+    /* margin-right: 100px; */
+    margin-top: -20px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.imgLogo{
+    width: 50px;
+    height: 55px;
+}
+
+.logo span{
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--azul-texto);
+}
+
+ul{
+    display: flex;
+    justify-content: flex-end;
+    gap: 35px;
+    width: 100%;
+
+    list-style: none;
+    align-items: center;
+    padding-top: 20px; 
+}
+
+li{
+    display: inline-block;
+    position: relative;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+
+    color: var(--preto-texto);
+}
+
+li a{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.li-texto:after{
+    content: '';
+    width: 0%;
+    background-color: var(--preto-texto);
+    height: 3px;
+    border-radius: 20px;
+
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    display: block;
+    transition: all .3s ease-in-out ;
+}
+.li-texto:hover:after{
+    width: 100%;
+    left: 0;
+}
+
+.li-texto-marcado:after{
+    content: '';
+    width: 100%;
+    background-color: var(--preto-texto);
+    height: 3px;
+    border-radius: 20px;
+
+    position: absolute;
+    bottom: -10px;
+    display: block;
+    transition: all .3s ease-in-out ;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.li-cadastro{
+    background-color: #16437d;
+    border-radius: 5px;
+    width: 200px;
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #ffff;
+
+}
+
+.li-cadastro:hover{
+    background-color: #1a55a2;
+    cursor: pointer;
+}
+
+.barra-navbar{
+    font-size: 25px;
+    color: black;
+}
+
+
+
+
+
+.banner{
+    margin-top: 30px;
+}
+
+.banner .container{
+    justify-content: space-around;
+}
+
+.mensagem_banner{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 800px;
+    margin-top: 100px;
+    margin-right: 200px;
+}
+
+.mensagem_usuario > span, .mensagem_usuario{
+    color: black;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 70%;
+    line-height: 25px;
+
+
+}
+
+.img_carteiro{
+    margin-top: -50px;
+    width: 500px;
+}
+
+
+
+h2{
+    font-weight: 30px;
+    font-size: 30px;
+    margin: 20px 0;
+    text-align: center;
+    color: rgb(96, 96, 96);
+}
+
+.formulario span{
+    width: 100%;
+    border-bottom: #4597c6 solid 4px;
+    margin-bottom: 20px;
+}
+
+.formulario {   
+    background-color: white;
+    width: 395px;
+    height: 550px;
+    padding: 25px;
+
+    /* margin-right: 200px; */
+
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;  
+}
+
+.formulario .campo input{
+    width: 340px;
+    height: 30px;
+    color: rgb(96, 96, 96);  
+    border-radius: 5px;
+    border: none;
+    background-color: #f1f1f1;
+    margin-bottom: 4px;
+    padding: 0 10px;
+}
+
+.formulario label{
+    color: rgb(96, 96, 96);
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.campo textarea {
+    resize: none;
+    color: rgb(96, 96, 96);
+    width: 340px;
+    height: 150px;
+    background-color: #f0efec;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+}
+
+.formulario .campo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.formulario .erro {
+    display: none;
+    font-size: 13px;
+    color: rgb(253, 82, 82);
+    
+}
+
+.formulario button{
+    background-color: #4597c6;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+}
+
+.formulario button:hover{
+    opacity: 0.8;
+}
+
+/* .formulario button:active{
+    transform: translateY(1px);
+} */
+.Mensagem {   
+    background-color: #fafcf9;
+    width: 395px;
+    height: 550px;
+    border-radius: 15px;
+    margin-right: 5%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;  
+}
+.Mensagem span{
+    width: 100%;
+    border-bottom: #4597c6 solid 4px;
+    margin-bottom: 20px;
+}
+.Mensagem video{
+    margin-top: 50px;
+    width: 150px;
+}
+.Mensagem button{
+    background-color: #4597c6;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 105px;
+}
+.Mensagem button:hover{
+    opacity: 0.8;
+}
+.Mensagem p{
+    color: rgb(96, 96, 96);
+    margin-top: 30px;
+}
+.retangulo{
+    position: absolute;
+    z-index: -1;
+    /* transform: translate(360px, -100px); */  
+    top: 50px;
+    right: 0;
+}
+
+.retangulo > img{
+    width: 900px;
+}
+
+.logo a{
+    color: #16437d;
+    text-decoration: none;
+    cursor: pointer;
+}
+.divFooter .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.icons div{
+    margin: 0 4px;
+}
+.icons p{
+    color: #16437d;
+    font-size: 30px;
+}
+.endereco{
+    
+    display: flex;
+    text-align: center;
+    margin: 30px 0;
+
+}
+.endereco p{
+    color: #16437d;
+}
+.divFooter {
+    margin-top: 200px;
+}
+.divFooter .container span{
+    width: 80%;
+    border-bottom: #4597c6 solid 4px;
+    margin-bottom: 20px;
+}
+.vacinas{
+    color: black;
+    background-color:white;
+}
+.d1style{
+    background-color: #fafcf9;
+    width: 395px;
+    height: 550px;
+    border-radius: 15px;
+    margin-right: 5%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px; 
+}

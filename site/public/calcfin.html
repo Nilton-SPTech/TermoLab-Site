@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/css/calcfin.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+</head>
+<body>
+    <div class="divHeader">
+        <div class="container">
+            <a href="index.html">
+                <div class="logo">
+                    <img class="imgLogo" src="assets/img/logo.png" alt="Logo marca da empresa">
+                    <span>TermoLab</span>
+                </div>
+            </a>
+            <div class="navbar">
+                <ul>
+                    <li class="li-texto"><a href="index.html">Início</a></li> 
+                    <li class="li-texto"><a href="quemsomos.html">Quem Somos</a></li> 
+                    <li class="li-texto-marcado"><a href="calcfin.html">Calculadora</a></li> 
+                    <li class="li-texto"><a href="contato.html">Contato</a></li>
+                    <span class="barra-navbar">|</span>
+                    <li class="li-texto bold">
+                        <a href="login.html">Login</a>
+                    </li>
+                    <li>
+                        <a class="li-cadastro bold" href="cadastro.html">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="div1" class="banner">
+        <div class="retangulo">
+            <img src="assets/img/RectangleZ.png" alt="Retangulo de fundo">
+        </div>
+        <div class="container">  
+            <img class="imgEmpresario" width="600px" height="600px" src="assets/img/Counting.png" alt="Ilustração de um carteiro" >
+            <div id="inFormulario" class="formulario">
+                <h2>Calculadora Financeira</h2>
+                <span></span>
+                <H2>Qual vacina?</H2>
+                <div id="select">
+                    <select class="vacinas select_vacinas" id="sel_vacinas">
+                        <option value="AstraZeneca">AstraZeneca</option>
+                        <option value="Johnson">Johnson & Johnson</option>
+                        <option value="Sanofi">Sanofi / GSK</option>
+                        <option value="Biontech">BioNTech / Pfizer</option>
+                        <option value="CureVac">CureVac</option>
+                        <option value="Moderna">Moderna</option>
+                    </select><br><br><br>
+                </div>
+                <div class="campo">
+                    <label class="texto_calc" >Quantas doses foram compradas em 30 dias?</label>
+                    <input type="number" id='in_doses'>
+                </div><Br>
+                <div class="campo">
+                    <label class="texto_calc" for="inAssunto">Quantas geladeiras seu armazêm possui?</label>
+                    <input type="number" id="in_setor">
+                </div>
+                
+                <button onclick="resultado()">Calcular resultados!</button>
+                <i id="MsgV" class="erro">Preencha todos os campos para mandar a mensagem</i>
+            </div>
+            
+            <div id="d1" class="d1style">
+                <div id="inFormulario2" class="formulario2">
+                    <h2>Calculadora Financeira</h2>
+                    <span></span>
+                    <div class="div_msg" id="d3">
+
+                    </div>
+                
+                <button onclick="volta()">Fazer outra simulação!</button>    
+                </div>
+            </div>
+        
+        </div>
+    </div>
+
+    
+
+
+
+
+</body>
+</html>
+<!-- <script>
+    JEITO QUE NÃO DEU CERTO
+    
+    const dolartex=`https://economia.awesomeapi.com.br/json/last/USD-BRL`
+    const tex = await JSON.parse(dolartex)
+    var dolar = await tex.JSON()
+    console.log(tex.high)
+    
+
+</script> -->
+<script>
+    // Variável global que vai armazenar o valor da requisição feita pela API
+    var cotacao = 0
+    
+
+    //Aqui estou falando para o javascript executar a função buscarCota() assim que a tela carregar
+    window.onload = function() {
+      buscarCota();
+    };    
+
+    // ASYNC FUNCTION são aquelas funções que acessam ou buscam algum tipo de recurso em um dispositivo externo(API)
+    async function buscarCota(){
+    await fetch ("https://economia.awesomeapi.com.br/json/last/USD-BRL", {method:"GET"})
+        .then((resposta) => {return resposta.json()})
+        .then((respostaConvertida) => {
+        SetCotacao(respostaConvertida.USDBRL.high)
+        console.log(respostaConvertida.USDBRL.high)
+        })
+    };
+    
+    // Aqui estou atribuindo um valor a variável global cotação, no caso atribui o valor que veio da função buscarCota 
+    function SetCotacao(Valor) {
+        cotacao = Number(Valor)
+    };
+    
+    // Create our number formatter.
+    let formatacao = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+       });
+    
+    
+
+    function resultado() {
+
+        inFormulario.style.display="none"
+        d1.style.display="flex"
+        var vacina = (sel_vacinas.value)
+        var setor = Number(in_setor.value)
+        
+        var astrazeneca = cotacao * 1.78
+        var johnson = cotacao * 6.94
+        var sanofi = cotacao * 7.56
+        var biontech = cotacao * 12
+        var curevac = cotacao * 10
+        var moderna = cotacao * 14.70
+        var dose = Number(in_doses.value).toFixed(2);
+        if (vacina == 'AstraZeneca') {
+            var total = (astrazeneca * dose).toFixed(2)
+            var perda = (total * 0.4).toFixed(2)
+        } else if (vacina == 'Johnson') {
+            var total = (johnson * dose).toFixed(2)
+            var perda = (total * 0.4).toFixed(2)
+        } else if (vacina == 'Sanofi') {
+            var total = (sanofi * dose).toFixed(2)
+            var perda = (total * 0.4).toFixed(2)
+        } else if (vacina == 'Biontech') {
+            var total = (biontech * dose).toFixed(2)
+            var perda = (total * 0.4).toFixed(2)
+        } else if (vacina == 'CureVac') {
+            var total = (curevac * dose).toFixed(2)
+            var perda = (total * 0.4).toFixed(2)
+        } else if (vacina == 'Moderna') {
+            var total = (moderna * dose).toFixed(2)
+            var perda = (total * 0.4).toFixed(2)
+        }
+        var tempo = ((setor * 3359)/(perda))
+        var preco = setor * 3359
+        d3.innerHTML = `
+        <strong style="color:black;">Cotação Dolar: ${formatacao.format(cotacao)}</strong>  <br><br>  
+        Foram comprados ${formatacao.format(total)} de Vacinas da ${vacina} para este lote.<br>
+        Caso não tenha a devida administração da temperatura das vacinas, 
+        vocês terão uma perda de <b style="color: black;">40%</b> deste lote num período de 30 dias, totalizando <b style="color:red; ">${formatacao.format(perda)}</b>.<br>`
+        d3.innerHTML += `<br>Com um investimento de <b style="color: green;">${formatacao.format(preco)}</b> para instalar os sensores nas ${setor} geladeiras , sua empresa recuperaria o investimento em <b style="color: green;">${tempo.toFixed(0)}</b> meses!<br>`
+    }
+    function volta(){
+        inFormulario.style.display="flex"
+        d1.style.display="none"
+    }
+
+</script>

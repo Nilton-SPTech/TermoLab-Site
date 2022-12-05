@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/dashboard2.css">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+
+    <link rel="stylesheet" href="../assets/css/navbar_dashboard.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="div_navbar" id="div_navbar">
+        <div class="div_container">
+            <div class="div_menu" onclick="expandir_navbar(1)">
+
+                <div id="menu_solo">
+                    <i class='bx bx-menu bx-md'></i>
+                </div>
+                <div id="menu_conjunto">
+                    <i class='bx bx-menu bx-md'></i>
+                    Menu
+                </div>
+            </div>
+            <div class="div_icons_navbar">
+                <div class="div_icon" id="div_icon1">
+
+                    <div id="div_icon_solo1"
+                        onclick="window.location.href='dashboard.html'"
+                    >
+                        <i 
+                            class='bx bxs-dashboard'  
+                            style="font-size: 30px;"
+                        ></i>
+                    </div>
+                    <div 
+                        id="div_icon_conjunto1" 
+                        class="div_icon_conjunto" 
+                        style="display: none; gap: 10px;"
+                        onclick="window.location.href='dashboard.html'"
+                        >
+                        <i 
+                            class='bx bxs-dashboard'  
+                            style="font-size: 30px;"
+                        ></i>
+                        <span id="s_icon_texto">
+                            Dashboard
+                        </span>
+                    </div>
+                </div>
+                <div class="div_icon" id="div_icon2">
+
+                    <div id="div_icon_solo2"
+                    onclick="window.location.href='dashboard2.html'"
+                    >
+                        <i 
+                            class='bx bxs-objects-vertical-bottom'
+                            style="font-size: 30px;"
+                        ></i>
+                    </div>
+                    <div 
+                        id="div_icon_conjunto2" 
+                        style="display: none; gap: 10px;"
+                        onclick="window.location.href='dashboard2.html'"
+                        > 
+
+                        <i 
+                            class='bx bxs-objects-vertical-bottom'
+                            style="font-size: 30px;"
+                        ></i>
+                        <span>
+                            Gráficos
+                        </span>
+                    </div>
+                </div>
+                <div class="div_icon" id="div_icon3">
+
+                    <div id="div_icon_solo3"
+                    onclick="window.location.href='dashboard2.html'"
+                    >
+                        <i 
+                            class='bx bx-cog bx-sm'
+                            style="font-size: 30px;"
+                        ></i>
+                    </div>
+
+                    <div  
+                        id="div_icon_conjunto3" 
+                        style="display: none; gap: 10px;"
+                        onclick="window.location.href='dashboard2.html'"
+                    > 
+                        <i 
+                            class='bx bx-cog bx-sm'
+                            style="font-size: 30px;"
+                        ></i>
+                        <span id="s_icon_texto">
+                            Configurações
+                        </span>
+                    </div>
+                </div>
+
+                <div class="div_icon_exit"
+                onclick="sair()"
+                >
+                    <i 
+                        class='bx bx-exit'
+                    ></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="div_main">
+        <!-- HEADER -->
+        <div class="div_header">
+            <div class="div_usuario">
+                <i class='bx bxs-user-circle bx-lg' style='color:#174580' onclick="window.location.href='dashboard.html'"></i>
+                <p>Olá, <span id="s_nome"></span></p>
+            </div>
+        </div>
+
+        <div class="grafico_linha">
+            <h3>Grafico Setores</h3>
+            <div class="content_chart">
+                <div class="caixaSelect">
+                    <label for="select_chart">Selecionar por Setor</label>
+                    <div id="select_chart" class="select_chart">
+                        <select id="select_setor" onchange="selectDadosSetor()"></select>
+
+                        <h4>Quantidade de vacinas: <span id="s_vacinas"></span></h4>
+                        <div class="div_input">
+                            <input type="number" placeholder="Dar baixa" id="in_baixa">
+                            <button onclick="darBaixa()">Dar baixa</button>
+                        </div>
+                    </div>
+                    <div class="select_chart caixa-margim">
+                        <div class="kpi">
+                            <div class="indicadorCaixa colorA"></div>
+                            <p>Ideal</p>
+                        </div>
+                        <div class="kpi">
+                            <div class="indicadorCaixa colorB"></div>
+                            <p>Preocupante</p>
+                        </div>
+                        <div class="kpi">
+                            <div class="indicadorCaixa colorC"></div>
+                            <p>Perigo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvasGrafico">
+                    <div class="alertAtualizacao">
+                        <p>Nenhum dado para atualizar</p>
+                    </div>
+                    <label id="nomeSetor" for="graphs">Setor Xpto</label>
+                    <div class="graphs">
+                        <div class="grafico">
+                            <canvas id="myChart31"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="containerMensagem">
+                    <label for="caixaMensagem">Alertas / Ultimas 24h</label>
+                    <div id="caixaMensagem" class="mensagem">
+                        <!-- <div class="alerta perigo">
+                            <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
+                            <p>Temperatura excedeu o limite de preocupante pelo menos 10 vezes hoje!</p>
+                        </div>
+                        <div class="alerta">
+                            <b>Verificar</b> <span>10/12/2022 - 01:00</span>
+                            <p>Amplitude ultrapassou o limite desejável, verificar funcionamento do sensor ou geladeira.</p>
+                        </div>
+                        <div class="alerta">
+                            <b>Umidade</b> <span>11/12/2022 - 10:54</span>
+                            <p>A umidade está fora dos parametros de 77% mínimo e 84% máximo, requer manutenção.</p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="screen2">
+            <div class="div2">
+                <label for="divDado">Setor Xpto</label>
+                <div class="dado" id="divDado">
+                    <div class="grafico">
+                        <canvas style="position: relative; height:60vh; width:40vw" id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="containerMensagem">
+                <label for="caixaMensagem">Alertas / Ultimas 24h</label>
+                <div id="caixaMensagem" class="mensagem">
+                    <div class="alerta">
+                        <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
+                        <p>Temperatura excedeu o limite de preocupante pelo menos 10 vezes hoje!</p>
+                    </div>
+                    <div class="alerta">
+                        <b>Verificar</b> <span>10/12/2022 - 01:00</span>
+                        <p>Amplitude ultrapassou o limite desejável, verificar funcionamento do sensor ou geladeira.</p>
+                    </div>
+                    <div class="alerta">
+                        <b>Umidade</b> <span>11/12/2022 - 10:54</span>
+                        <p>A umidade está fora dos parametros de 77% mínimo e 84% máximo, requer manutenção.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="kpi">
+                <div class="kpiDados dado1">
+                    <b>Amplitude Máxima</b>
+                    <p>9ºC</p>
+                </div>
+                <div class="kpiDados dado2">
+                    <b>Temperatura Máxima</b>
+                    <p>-20ºC</p>
+                </div>
+                <div class="kpiDados dado3">
+                    <b>Temperatura Minima</b>
+                    <p>-29ºC</p>
+                </div>
+            
+                <div class="medidor">
+                    <img class="imgMedidor" src="assets/img/ampuleta.png" width="250px" alt="">
+                    <b class="b1">Preocupante</b>
+                    <b class="b2">Aceitável</b>
+                    <b class="b3">Preocupante</b>
+                </div>
+            </div>
+        </div> -->
+
+
+    </div>
+
+    
+</body>
+</html>
+<script src="../js/funcao_dashboard2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../assets/js/navbar_dashboard.js"></script>
+
+<script>
+    s_nome.innerHTML = sessionStorage.NOME_CLIENTE 
+    s_nome.innerHTML = sessionStorage.NOME_USUARIO 
+</script>
+
+<script>
+
+    
+
+</script>

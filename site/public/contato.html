@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/css/contato.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- <link rel="stylesheet" href="assets/css/index.css"> -->
+</head>
+<!-- CONFIG CHATBOT -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=36bc358c-1ad2-4d84-add7-cf01154b670b">
+</script>
+<!-- FIM DA CONFIG CHATBOT-->
+<body>   
+
+    <div class="divHeader">
+        <div class="container">
+            <a href="index.html">
+                <div class="logo">
+                    <img class="imgLogo" src="assets/img/logo.png" alt="Logo marca da empresa">
+                    <span>TermoLab</span>
+                </div>
+            </a>
+            <div class="navbar">
+                <ul>
+                    <li class="li-texto"><a href="index.html">Início</a></li> 
+                    <li class="li-texto"><a href="quemsomos.html">Quem Somos</a></li> 
+                    <li class="li-texto"><a href="calcfin.html">Calculadora</a></li> 
+                    <li class="li-texto-marcado"><a href="contato.html">Contato</a></li>
+                    <span class="barra-navbar">|</span>
+                    <li class="li-texto bold">
+                        <a href="login.html">Login</a>
+                    </li>
+                    <li>
+                        <a class="li-cadastro bold" href="cadastro.html">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    <div class="banner">
+        <div class="retangulo">
+            <img src="assets/img/RectangleZ.png" alt="Retangulo de fundo">
+        </div>
+        <div class="container">  
+
+            <div class="mensagem_banner">
+                <p class="mensagem_usuario">
+                    <!-- <span style="font-size:1.6rem"class="bold">Com o que podemos te ajudar? </span> -->
+                    <!-- <br><br> Mande uma mensagem para a nossa equipe para que possamos resolver seu problema! -->
+                </p>
+                <img class="img_carteiro" width="590px" src="assets/img/Messages-bro 1.png" alt="Ilustração de um carteiro" >
+            </div>
+            <div id="inFormulario" class="formulario">
+                <h2>Fale conosco</h2>
+                <span></span>
+                <div class="campo">
+                <label for="inNome">Nome completo</label>
+                <input placeholder="Fernanda Caramico" type="text" id="inNome">
+                </div>
+                <div class="campo">
+                <label for="inEmail">Endereço de e-mail</label>
+                <input placeholder="email.example@sptech.school" type="text" id="inEmail">
+                </div>
+                <div class="campo">
+                <label for="inTel">Telefone</label>
+                <input placeholder="99 99999-9999" maxlength="13" onkeyup="cel_mascaraCtt()" type="text" id="inTel">
+                </div>
+                <div class="campo">
+                <label for="inAssunto">Assunto</label>
+                <textarea id="inAssunto" cols="30" rows="10"></textarea>
+                </div>
+                
+                <button onclick="envio()">Enviar</button>
+                <i id="MsgV" class="erro">Preencha todos os campos para mandar a mensagem</i>
+            </div>
+            <div id="inMensagem" class="Mensagem">
+                <h2>Fale conosco</h2>
+                
+                <span></span>
+                <video src="assets/img/check-green.mp4" id="video"></video>      
+                <p>Sua mensagem foi enviada com sucesso!</p>
+                <button onclick="">Tela inicial</button>
+            
+    
+                
+            </div>
+        </div>
+    </div>
+   
+    <script src="assets/js/mascara.js"></script>
+
+</body>
+</html>
+<script>
+    
+    function envio(){
+        var nome = inNome.value
+        var email = inEmail.value
+        var tel = inTel.value
+        var assunto = inAssunto.value
+
+        var confirm = nome != '' && email != '' && tel != '' && assunto != ''
+
+        if (confirm){
+        inMensagem.style.display = "flex";
+        inFormulario.style.display = "none";
+        video.play()
+        }else {
+        MsgV.style.display = "block";
+        }
+    }
+
+    
+</script>
