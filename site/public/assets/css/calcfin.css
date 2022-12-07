@@ -347,15 +347,16 @@ li a{
     background-color: #f0efec;
 }
 .d1style{
-    background-color: #fafcf9;
-    width: 395px;
+    background-color: white;
+    width: 390px;
     height: 550px;
-    border-radius: 15px;
-    margin-right: 5%;
+    border-radius: 5px;
+    padding: 25px;
+    /* margin-right: 5%; */
     display: none;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px; 
+    margin-top: 30px;  
 }
 .div_msg{
     justify-content: center;

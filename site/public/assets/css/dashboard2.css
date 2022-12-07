@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow-x: hidden;
 }
 
 .dado{
@@ -45,7 +46,7 @@ body{
     width: 180px;
     /* height: 450px; */
     /* margin-bottom: 5px; */
-    border-radius: 5px;
+    border-radius: 3px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -127,7 +128,7 @@ body{
 }
 
 .dado{
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .divDado{
@@ -141,7 +142,7 @@ body{
     width: 105px;
     height: 105px;
     margin-bottom: 27px;
-    border-radius: 10px;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -266,14 +267,16 @@ body{
     height: 5vh;
     background-color: white;
     position: absolute;
-    left: 845px;
-    margin: 40px 0;
-    border-radius: 5px 5px 0px 0px;
+    right: -275px;
+    top: 80px;
+    margin: 0px 250px;
+    border-radius: 3px 0px 0px 3px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 3;
     transition: 2s ease-in-out;
+    
 }
 
 .select_chart h4{

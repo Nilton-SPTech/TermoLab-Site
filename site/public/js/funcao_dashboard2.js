@@ -121,7 +121,7 @@ function atualizarGrafico(setor, dados, myChart3) {
                 if (response[0].momento == dados.labels[dados.labels.length - 1]) {
                     divAlerta.style.margin = "0 0"
                 } else {
-                    divAlerta.style.margin = "40px 0"
+                    divAlerta.style.margin = "0 250px"
                     dados.labels.shift()
                     dados.labels.push(response[0].momento)
                     dados.datasets[0].data.shift()
