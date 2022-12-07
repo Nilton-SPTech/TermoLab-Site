@@ -31,12 +31,12 @@
                 </div>
             </div>
             <div class="div_icons_navbar">
-                <div class="div_icon" id="div_icon1">
+                <div class="div_icon" id="div_icon1" style="display: flex;">
 
                     <div id="div_icon_solo1" onclick="window.location.href='dashboard.html'">
                         <i class='bx bxs-dashboard' style="font-size: 30px;"></i>
                     </div>
-                    <div id="div_icon_conjunto1" class="div_icon_conjunto" style="display: none; gap: 10px;"
+                    <div id="div_icon_conjunto1" class="div_icon_conjunto" style="display: none; gap: 10px; align-items: center;"
                         onclick="window.location.href='dashboard.html'">
                         <i class='bx bxs-dashboard' style="font-size: 30px;"></i>
                         <span id="s_icon_texto">
@@ -46,29 +46,32 @@
                 </div>
                 <div class="div_icon" id="div_icon2">
 
-                    <div id="div_icon_solo2" onclick="window.location.href='dashboard2.html'">
-                        <i class='bx bxs-objects-vertical-bottom' style="font-size: 30px;"></i>
+                    <div id="div_icon_solo2" onclick="window.location.href='https:termolab9927.zendesk.com/hc/pt-br'" target="_blank" rel="noreferrer noopener">
+                        <i class='bx bx-chat' style="font-size: 30px;"></i>
+                        <!-- <i class='bx bxs-objects-vertical-bottom' style="font-size: 30px;"></i> -->
                     </div>
-                    <div id="div_icon_conjunto2" style="display: none; gap: 10px;"
-                        onclick="window.location.href='dashboard2.html'">
+                    <div id="div_icon_conjunto2" style="display: none; gap: 10px; align-items: center;"
+                        onclick="window.location.href='https:termolab9927.zendesk.com/hc/pt-br'" target="_blank" rel="noreferrer noopener">
 
-                        <i class='bx bxs-objects-vertical-bottom' style="font-size: 30px;"></i>
+                        <!-- <i class='bx bxs-objects-vertical-bottom' style="font-size: 30px;"></i> -->
+                        <i class='bx bx-chat' style="font-size: 30px;"></i>
                         <span>
-                            Gráficos
+                            Zendesk
                         </span>
                     </div>
                 </div>
                 <div class="div_icon" id="div_icon3">
 
-                    <div id="div_icon_solo3" onclick="window.location.href='dashboard2.html'">
-                        <i class='bx bx-cog bx-sm' style="font-size: 30px;"></i>
+                    <div id="div_icon_solo3" onclick="window.location.href='https:trello.com/1/cards/638f57193386bf0059ac3a83/attachments/638f582b33362702f39608b9/download/Group_1Manual_de_Instala%C3%A7%C3%A3o-2.pdf'">
+                        <i class='bx bx-download bx-sm' style='color:#ffffff; font-size: 30px;'></i>
+                        <!-- <i class='bx bx-cog bx-sm' style="font-size: 30px;"></i> -->
                     </div>
 
                     <div id="div_icon_conjunto3" style="display: none; gap: 10px;"
-                        onclick="window.location.href='dashboard2.html'">
-                        <i class='bx bx-cog bx-sm' style="font-size: 30px;"></i>
+                        onclick="window.location.href='https:trello.com/1/cards/638f57193386bf0059ac3a83/attachments/638f582b33362702f39608b9/download/Group_1Manual_de_Instala%C3%A7%C3%A3o-2.pdf'">
+                        <i class='bx bx-download bx-sm' style='color:#ffffff; font-size: 30px;'></i>
                         <span id="s_icon_texto">
-                            Configurações
+                            Manual de Instalação
                         </span>
                     </div>
                 </div>
@@ -97,6 +100,7 @@
             <select id="selSetor" class="sel_setor">
                 <option disabled selected>Selecione sua Geladeira</option>
             </select>
+            <label for="qtd">Quantidade</label>
             <input id="inQtd" type="text" placeholder="quantidade">
             <button class="bVacina" onclick="cadastrarMedicamento()">Cadastrar</button>
         </div>
@@ -173,19 +177,19 @@
                 <div class="caixaSelect">
                     <label for="select_chart">Selecionar por Setor</label>
                     <div id="select_chart" class="select_chart">
-                        <select id="select_setor">
+                        <select id="select_setor" onchange="obterDadosDash()">
 
                         </select>
-                        <button>Temperatura Maxima</button>
+                        <!-- <button>Temperatura Maxima</button>
                         <button>Temperatura Minima</button>
-                        <button>Amplitude</button>
+                        <button>Amplitude</button> -->
                     </div>
                 </div>
                 <div class="canvasGrafico">
-                    <label id="nome_do_setor" for="graphs">Setor Xpto</label>
+                    <label id="nome_do_setor" for="graphs">Análise Gráfica</label>
                     <div class="graphs">
                         <div class="grafico">
-                            <canvas style="position: relative; height:50vh; width:40vw" id="myChart3"></canvas>
+                            <canvas  id="myChart3"></canvas>
                         </div>
                     </div>
                 </div>
@@ -283,6 +287,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/usuario.js"></script>
     <script src="../js/funcao_dashboard.js"></script>
+    <!-- <script src="../js/funcao_dashboard2.js"></script> -->
     
 </body>
 </html>

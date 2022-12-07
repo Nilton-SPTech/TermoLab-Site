@@ -15,6 +15,14 @@
 <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=36bc358c-1ad2-4d84-add7-cf01154b670b">
 </script>
 <!-- FIM DA CONFIG CHATBOT-->
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("uZp8CyjepahM4Onsj");
+   })();
+</script>
 <body>   
 
     <div class="divHeader">
@@ -61,20 +69,20 @@
                 <h2>Fale conosco</h2>
                 <span></span>
                 <div class="campo">
-                <label for="inNome">Nome completo</label>
-                <input placeholder="Fernanda Caramico" type="text" id="inNome">
+                <label  >Nome completo</label>
+                <input id="nome" placeholder="Fernanda Caramico" type="text">
+                </div>
+                <div  class="campo">
+                <label >Endereço de e-mail</label>
+                <input id="email" placeholder="email.example@sptech.school" type="text">
                 </div>
                 <div class="campo">
-                <label for="inEmail">Endereço de e-mail</label>
-                <input placeholder="email.example@sptech.school" type="text" id="inEmail">
+                <label >Telefone</label>
+                <input placeholder="99 99999-9999" maxlength="13" onkeyup="cel_mascaraCtt()" type="text">
                 </div>
-                <div class="campo">
-                <label for="inTel">Telefone</label>
-                <input placeholder="99 99999-9999" maxlength="13" onkeyup="cel_mascaraCtt()" type="text" id="inTel">
-                </div>
-                <div class="campo">
-                <label for="inAssunto">Assunto</label>
-                <textarea id="inAssunto" cols="30" rows="10"></textarea>
+                <div  class="campo">
+                <label >Assunto</label>
+                <textarea id="message" cols="30" rows="10"></textarea>
                 </div>
                 
                 <button onclick="envio()">Enviar</button>
@@ -86,7 +94,7 @@
                 <span></span>
                 <video src="assets/img/check-green.mp4" id="video"></video>      
                 <p>Sua mensagem foi enviada com sucesso!</p>
-                <button onclick="">Tela inicial</button>
+                <button onclick="voltar()">Tela inicial</button>
             
     
                 
@@ -99,18 +107,24 @@
 </body>
 </html>
 <script>
-    
+    function voltar(){
+        window.location = "./index.html"
+    }
     function envio(){
-        var nome = inNome.value
-        var email = inEmail.value
-        var tel = inTel.value
-        var assunto = inAssunto.value
-
-        var confirm = nome != '' && email != '' && tel != '' && assunto != ''
+        var params = {
+            from_name: document.getElementById("nome").value,
+            email_id : document.getElementById("email").value,
+            message : document.getElementById("message").value
+        }
+        
+        var confirm = true
 
         if (confirm){
         inMensagem.style.display = "flex";
         inFormulario.style.display = "none";
+        emailjs.send("termolab","template_ofjnvuj",params).then(function(res){
+            alert('deu certo' + res.status);
+        })
         video.play()
         }else {
         MsgV.style.display = "block";

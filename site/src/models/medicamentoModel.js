@@ -23,7 +23,7 @@ function listar_medicamento_metrica(usuario){
     var instrucao = `
     select  min(temperatura) 'minimo', max(temperatura) 'maximo', (max(temperatura) - min(temperatura)) 'amplitude'
     from lote left join geladeira on lote.fkGeladeira = idGeladeira left join sensor on idGeladeira = sensor.fkGeladeira
-    join metrica on idSensor = fkSensor where lote.fkUsuario = ${usuario} group by lote.fkMedicamento order by lote.fkMedicamento;
+    join metrica on idSensor = fkSensor where lote.fkUsuario = ${usuario} and dataHora >= DATEADD(hour, -27, GETDATE()) group by lote.fkMedicamento order by lote.fkMedicamento;
     
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

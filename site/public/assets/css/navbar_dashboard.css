@@ -7,6 +7,10 @@
     
 }
 
+.div_icon {
+    display: flex;
+    align-items: center;
+}
 
 /* NAVBAR */
 

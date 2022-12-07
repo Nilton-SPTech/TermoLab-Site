@@ -1,8 +1,8 @@
 var usuario = sessionStorage.ID_USUARIO
 
-function titulo_setor(idSetor){
-    nome_do_setor.innerHTML = `Geladeira na ${idSetor}`
-}
+// function titulo_setor(idSetor){
+//     nome_do_setor.innerHTML = `Geladeira na ${idSetor}`
+// }
 
 function carregarSetores(){
     var idUsuario = sessionStorage.getItem('ID_USUARIO')
@@ -22,7 +22,7 @@ function carregarSetores(){
                     `
                 }
                 obterDadosDash()
-                titulo_setor(response[0].sala)
+                // titulo_setor(response[0].sala)
                 graficoPizza(response.length)
                 alertas()
             })
@@ -148,15 +148,15 @@ async function listar_tela_medicamentos(id){
                                 <span class="s_titulo">Total de setores</span>
                                 <span>${medicamento[i].contagem}</span>
                             </div>
-                            <div class="div_forma_marcador div_marcador_min">
+                            <div class="div_forma_marcador div_marcador_max">
                                 <span class="s_titulo">Temperatura máxima</span>
                                 <span>${contagem[i].maximo}</span>
                             </div>
-                            <div class="div_forma_marcador div_marcador_max">
+                            <div class="div_forma_marcador div_amplitute">
                                 <span class="s_titulo">Amplitude</span>
                                 <span>${contagem[i].amplitude}</span>
                             </div>
-                            <div class="div_forma_marcador div_amplitute">
+                            <div class="div_forma_marcador div_marcador_min">
                                 <span class="s_titulo">Temperatura Miníma</span>
                                 <span>${contagem[i].minimo}</span>
                             </div>
@@ -164,18 +164,55 @@ async function listar_tela_medicamentos(id){
                     </div>`     
                 } 
             container.innerHTML = div_vacina
+
+            mudarCores(contagem, medicamento)
+
             })
         }
     })
 
-   
+}
 
+function mudarCores(contagem, medicamento){
+    var corTempMax = document.querySelectorAll('.div_marcador_max')
+    var corTempMin = document.querySelectorAll('.div_marcador_min')
+    var corAmplitude = document.querySelectorAll('.div_amplitute')
+
+    for(var i = 0; i < contagem.length; i++){
+        var max = contagem[i].maximo
+        if(max > -8 && max < -2){
+            corTempMax[i].style.background = "#0e3363"
+        }else if((max > -11 && max <= -8) || (max > -1 && max < 0)){
+            corTempMax[i].style.background = "#e6903a"
+        }else{
+            corTempMax[i].style.background = "rgb(240, 59, 59)"
+        }
+
+        var min = contagem[i].minimo
+        if(min > -8 && min < -2){
+            corTempMin[i].style.background = "#0e3363"
+        }else if((min > -11 && min <= -8) || (min > -1 && min < 0)){
+            corTempMin[i].style.background = "#e6903a"
+        }else{
+            corTempMin[i].style.background = "rgb(240, 59, 59)"
+        }
+
+        var amp = contagem[i].amplitude
+        if(amp > 0 && amp <= 6){
+            corAmplitude[i].style.background = "#0e3363"
+        }else if(amp <= 10){
+            corAmplitude[i].style.background = "#e6903a"
+        }else{
+            corAmplitude[i].style.background = "rgb(240, 59, 59)"
+        }
+    }
 }
 
 
 
 function ir_dashboard(id){
     sessionStorage.ID_MEDICAMENTO = id
+
 
     window.location ="../dashboard/dashboard2.html"
 }
@@ -316,7 +353,18 @@ function exibirDados(dadosR, setor){
         labels.push(atual.momento)
         dados.datasets[0].data.push(atual.temperatura)
     }
-    const config = {type: 'line', data: dados}
+    const config = {
+        type: 'line', 
+        data: dados,
+        options: {
+            scales: {
+                y: {
+                    min: -20,
+                    max: 10
+                }
+            }
+        }
+    }
     if(myChart3 != null){
         excluirChart()
     }
@@ -334,7 +382,7 @@ function atualizarGrafico(setor, dados, myChart3){
         if(resposta.ok){
             resposta.json().then((response)=>{
                 if(response[0].momento == dados.labels[dados.labels.length - 1]){
-                    /* console.log('Não há dados novos') */
+
                 }else{
                     dados.labels.shift()
                     dados.labels.push(response[0].momento)
@@ -361,10 +409,6 @@ function alertas(){
                 var min = document.querySelector('.s_minima')
                 var max = document.querySelector('.s_maxima')
                 var amp = document.querySelector('.s_amplitude')
-
-                var divMin = document.querySelector('#div_marcador_min')
-                var divMax = document.querySelector('#div_marcador_max')
-                var divAmp = document.querySelector('#div_amplitude')
 
                 for(var i = 0; i < response.length; i++){
                     var atual = response[i]

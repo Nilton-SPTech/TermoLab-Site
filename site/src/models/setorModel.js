@@ -75,7 +75,8 @@ function carregarSetoresDash2(idUsuario, idMedicamento){
 function alertas(medicamento){
 
     var instrucao = `
-    select top 15 temperatura, umidade from metrica join sensor on idSensor = fkSensor join geladeira on idGeladeira = sensor.fkGeladeira join lote on idGeladeira = lote.fkGeladeira where fkMedicamento = ${medicamento};
+    select temperatura, umidade from metrica join sensor on idSensor = fkSensor join geladeira on idGeladeira = sensor.fkGeladeira join lote on idGeladeira = lote.fkGeladeira 
+	where fkMedicamento = ${medicamento} and dataHora >= DATEADD(hour, -27, GETDATE());
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao)
@@ -115,6 +116,12 @@ function deleteSetor(setor, medicamento){
     var instrucao = `DELETE FROM lote WHERE fkGeladeira = ${setor} AND fkMedicamento = ${medicamento}`
     return database.executar(instrucao); 
 }
+function carregarNomeVacina(medicamento){
+    var instrucao = `
+            select descricao from medicamento where idMedicamento = ${medicamento};
+    `
+    return database.executar(instrucao);
+}
 
 module.exports = {
     cadastrar,
@@ -129,5 +136,6 @@ module.exports = {
     manutencao,
     tipoMedicamento,
     capacidadeSetor,
-    deleteSetor
+    deleteSetor,
+    carregarNomeVacina
 }

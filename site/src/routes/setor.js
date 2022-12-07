@@ -55,5 +55,6 @@ router.get("/capacidadeSetor/:idUsuario", function (req, res){
 router.post("/deleteSetor", function(req,res){
     setorController.deleteSetor(req, res)
 })
+router.get("/carregarNomeVacina/:idMedicamento", (req,res)=>setorController.carregarNomeVacina(req, res));
 
 module.exports = router

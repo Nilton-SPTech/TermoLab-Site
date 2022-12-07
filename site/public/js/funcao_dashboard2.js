@@ -1,13 +1,20 @@
-function tituloSetor(idSetor){
-    nomeSetor.innerHTML = `Geladeira na ${idSetor}`
-}
+ function tituloSetor() {
+    fetch(`/setor/carregarNomeVacina/${sessionStorage.ID_MEDICAMENTO}`).then((resposta)=>{
+        if(resposta.ok){
+            resposta.json().then((resposta1)=>{
+                nomeSetor.innerHTML=resposta1[0].descricao
+            })
+        }
+    })
+ }
 
-function carregarSetoresDash2(){
+
+function carregarSetoresDash2() {
     var idUsuario = sessionStorage.getItem('ID_USUARIO')
     var idMedicamento = sessionStorage.getItem('ID_MEDICAMENTO')
 
     fetch(`/setor/carregarSetoresDash2`, {
-        method: "POST", 
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
@@ -15,38 +22,38 @@ function carregarSetoresDash2(){
             idUsuario,
             idMedicamento
         })
-    }).then(function(resposta){
-        if(resposta.ok){
-            resposta.json().then((response)=>{
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then((response) => {
                 select_setor.innerHTML = ''
-                for(var i = 0; i < response.length; i++){
+                for (var i = 0; i < response.length; i++) {
                     var atual = response[i]
                     select_setor.innerHTML += `
                     <option value="${atual.idGeladeira}">Geladeira na ${atual.sala}</option>
                     `
                 }
-                tituloSetor(response[0].sala)
+                tituloSetor()
                 selectDadosSetor()
             })
         }
     })
 }
 
-window.onload = function(){
+window.onload = function () {
     carregarSetoresDash2();
     alertas();
 }
 
 
 
-function selectDadosSetor(){
+function selectDadosSetor() {
     var setor = select_setor.value
 
     sessionStorage.ID_SETOR = setor
 
-    fetch(`/medicamento/selectDadosSetor/${setor}`).then((resposta)=>{
-        if(resposta.ok){
-            resposta.json().then((response)=>exibirDadosSetor(response, setor))
+    fetch(`/medicamento/selectDadosSetor/${setor}`).then((resposta) => {
+        if (resposta.ok) {
+            resposta.json().then((response) => exibirDadosSetor(response, setor))
             mostrar_vacina()
             buscar_sensor()
         }
@@ -56,34 +63,42 @@ function selectDadosSetor(){
 
 var myChart3
 
-function excluirChart(){
+function excluirChart() {
     myChart3.destroy()
 }
 
-function exibirDadosSetor(dadosR, setor){
+function exibirDadosSetor(dadosR, setor) {
     var labels = []
     var dados = {
         labels,
         datasets: [
-        {
-            label: 'Temperatura',
-            data: [],
-            fill: false,
-            borderColor: '#174580',
-            tension: 0.1
-        }]
+            {
+                label: 'Temperatura',
+                data: [],
+                fill: false,
+                borderColor: '#174580',
+                tension: 0.1
+            }]
     }
-    for(var i = 0; i < dadosR.length; i++){
+    for (var i = 0; i < dadosR.length; i++) {
         var atual = dadosR[dadosR.length - (i + 1)]
         labels.push(atual.momento)
         dados.datasets[0].data.push(atual.temperatura)
     }
     const config = {
         type: 'line',
-        data: dados
+        data: dados,
+        options: {
+            scales: {
+                y: {
+                    min: -20,
+                    max: 10
+                }
+            }
+        }
     }
-    if(myChart3 != null){     
-        excluirChart()  
+    if (myChart3 != null) {
+        excluirChart()
     }
 
     myChart3 = new Chart(
@@ -91,21 +106,21 @@ function exibirDadosSetor(dadosR, setor){
         config
     )
 
-    setTimeout(()=>atualizarGrafico(setor, dados, myChart3),5000)
+    setTimeout(() => atualizarGrafico(setor, dados, myChart3), 5000)
 }
 
 var proximaAtualizacao
 
-function atualizarGrafico(setor, dados, myChart3){
+function atualizarGrafico(setor, dados, myChart3) {
 
-    fetch(`/medicamento/atualizarGrafico/${setor}`).then((resposta)=>{
-        if(resposta.ok){
-            resposta.json().then((response)=>{
+    fetch(`/medicamento/atualizarGrafico/${setor}`).then((resposta) => {
+        if (resposta.ok) {
+            resposta.json().then((response) => {
                 var divAlerta = document.querySelector('.alertAtualizacao')
 
-                if(response[0].momento == dados.labels[dados.labels.length - 1]){
+                if (response[0].momento == dados.labels[dados.labels.length - 1]) {
                     divAlerta.style.margin = "0 0"
-                }else{
+                } else {
                     divAlerta.style.margin = "40px 0"
                     dados.labels.shift()
                     dados.labels.push(response[0].momento)
@@ -115,14 +130,14 @@ function atualizarGrafico(setor, dados, myChart3){
                     myChart3.update()
                 }
 
-                proximaAtualizacao = setTimeout(()=>atualizarGrafico(setor, dados, myChart3), 5000)
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(setor, dados, myChart3), 5000)
             })
         }
     })
 
 }
 
-function alertas(){
+function alertas() {
     var medicamento = sessionStorage.ID_MEDICAMENTO
     var perigoMaxima = []
     var perigoMinima = []
@@ -131,50 +146,50 @@ function alertas(){
     var maiorUmi = 0
     var menorUmi = 0
 
-    fetch(`/setor/alertas/${medicamento}`).then((resposta)=>{
-        if(resposta.ok){
-            resposta.json().then((response)=>{
+    fetch(`/setor/alertas/${medicamento}`).then((resposta) => {
+        if (resposta.ok) {
+            resposta.json().then((response) => {
                 console.log(response)
-                for(var i = 0; i < response.length; i++){
+                for (var i = 0; i < response.length; i++) {
                     var atual = response[i]
-                    if(atual.temperatura > -2){
+                    if (atual.temperatura > -2) {
                         perigoMaxima.push(atual.temperatura)
-                    }else if(atual.temperatura < -10){
+                    } else if (atual.temperatura < -10) {
                         perigoMinima.push(atual.temperatura)
                     }
 
-                    if(i == 0){
+                    if (i == 0) {
                         menorTemp = atual.temperatura
                         maiorTemp = atual.temperatura
                     }
-                    if(atual.temperatura > maiorTemp){
+                    if (atual.temperatura > maiorTemp) {
                         maiorTemp = atual.temperatura
                     }
-                    if(atual.temperatura < menorTemp){
+                    if (atual.temperatura < menorTemp) {
                         menorTemp = atual.temperatura
                     }
 
-                    if(i == 0){
+                    if (i == 0) {
                         menorUmi = atual.umidade
                         maiorUmi = atual.umidade
                     }
-                    if(atual.umidade > maiorTemp){
+                    if (atual.umidade > maiorTemp) {
                         maiorUmi = atual.umidade
                     }
-                    if(atual.umidade < menorTemp){
+                    if (atual.umidade < menorTemp) {
                         menorUmi = atual.umidade
                     }
                 }
-               
+
                 var amplitude = (maiorTemp - menorTemp).toFixed(2)
-                if(perigoMinima.length >= 10){
+                if (perigoMinima.length >= 10) {
                     caixaMensagem.innerHTML += `
-                    <div class="alerta">
+                    <div class="alertaV">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
                         <p>Temperatura excedeu o limite minimo de preocupante pelo menos ${perigoMinima.length} vezes hoje!</p>
                     </div>
                     `
-                }else if(perigoMinima.length >= 5){
+                } else if (perigoMinima.length >= 5) {
                     caixaMensagem.innerHTML += `
                     <div class="alerta">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
@@ -182,14 +197,14 @@ function alertas(){
                     </div>
                     `
                 }
-                if(perigoMaxima.length >= 10){
+                if (perigoMaxima.length >= 10) {
                     caixaMensagem.innerHTML += `
-                    <div class="alerta">
+                    <div class="alertaV">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
                         <p>Temperatura excedeu o limite maximo de preocupante pelo menos ${perigoMaxima.length} vezes hoje!</p>
                     </div>
                     `
-                }else if(perigoMaxima.length >= 5){
+                } else if (perigoMaxima.length >= 5) {
                     caixaMensagem.innerHTML += `
                     <div class="alerta">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
@@ -197,46 +212,46 @@ function alertas(){
                     </div>
                     `
                 }
-                if(amplitude > 10){
+                if (amplitude > 10) {
                     caixaMensagem.innerHTML += `
                     <div class="alerta">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
                         <p>Amplitude ultrapassou o limite de 10º, verificar funcionamento do sensor ou geladeira.</p>
                     </div>
                     `
-                }else if(amplitude > 12){
+                } else if (amplitude > 12) {
                     caixaMensagem.innerHTML += `
-                    <div class="alerta perigo">
+                    <div class="alertaV">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
                         <p>Amplitude ultrapassou o limite 12º, verificar funcionamento do sensor ou geladeira.</p>
                     </div>
                     `
                 }
-                if(maiorUmi > 85){
+                if (maiorUmi > 85) {
                     caixaMensagem.innerHTML += `
                     <div class="alerta">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
                         <p>A umidade está fora dos parametros máximo de 85% (${maiorUmi}), requer manutenção.</p>
                     </div>
                     `
-                }else if(maiorUmi > 90){
+                } else if (maiorUmi > 90) {
                     caixaMensagem.innerHTML += `
-                    <div class="alerta perigo">
+                    <div class="alertaV ">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
                         <p>A umidade está fora dos parametros máximo de 85% (${maiorUmi}), requer manutenção.</p>
                     </div>
                     `
                 }
-                if(menorUmi < 80){
+                if (menorUmi < 80) {
                     caixaMensagem.innerHTML += `
                     <div class="alerta">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
                         <p>A umidade está fora dos parametros mínimo de 80% (${menorUmi}), requer manutenção.</p>
                     </div>
                     `
-                }else if(menorUmi < 75){
+                } else if (menorUmi < 75) {
                     caixaMensagem.innerHTML += `
-                    <div class="alerta perigo">
+                    <div class="alertaV">
                         <b>Preocupante</b> <span>10/12/2022 - 08:14</span>
                         <p>A umidade está fora dos parametros mínimo de 80% (${menorUmi}), requer manutenção.</p>
                     </div>
@@ -252,13 +267,13 @@ function alertas(){
 
 
 mostrar_vacina()
-var quantidadeVacina = 0 
-function mostrar_vacina(){
+var quantidadeVacina = 0
+function mostrar_vacina() {
     var setor = sessionStorage.ID_SETOR
-    var medicamento = sessionStorage.ID_MEDICAMENTO 
+    var medicamento = sessionStorage.ID_MEDICAMENTO
 
     fetch("/medicamento/quantidadeVacinas", {
-        method: "POST", 
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
@@ -267,26 +282,26 @@ function mostrar_vacina(){
             idMedicamento: medicamento
         })
     })
-    .then(function (resposta){
-        if(resposta.ok){
-            resposta.json().then((resultado)=>{
-                quantidadeVacina = resultado[0].quantidade
-                s_vacinas.innerHTML = quantidadeVacina
-            })
-        }
-    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then((resultado) => {
+                    quantidadeVacina = resultado[0].quantidade
+                    s_vacinas.innerHTML = quantidadeVacina
+                })
+            }
+        })
     return quantidadeVacina
 }
 
 
-function darBaixa(){
+function darBaixa() {
     var quantidade = in_baixa.value
     var setor = sessionStorage.ID_SETOR
-    var medicamento = sessionStorage.ID_MEDICAMENTO 
+    var medicamento = sessionStorage.ID_MEDICAMENTO
 
-    if(quantidade <= quantidadeVacina){
+    if (quantidade <= quantidadeVacina) {
         fetch("/medicamento/updateVacina", {
-            method: "POST", 
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -296,29 +311,29 @@ function darBaixa(){
                 quantidadeBaixa: quantidade
             })
         })
-        .then(function (resposta){
-            if(resposta.ok){
-                mostrar_vacina()
-                deletar_vacina()
-            }
-        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    mostrar_vacina()
+                    deletar_vacina()
+                }
+            })
     }
-    else{
+    else {
         alert("Você não pode dar baixa")
     }
 }
 
 
-function deletar_vacina(){
-    var quantidade  = mostrar_vacina()
+function deletar_vacina() {
+    var quantidade = mostrar_vacina()
     console.log(quantidade)
 
-    if(quantidade <= 0){
+    if (quantidade <= 0) {
         var setor = sessionStorage.ID_SETOR
-        var medicamento = sessionStorage.ID_MEDICAMENTO 
+        var medicamento = sessionStorage.ID_MEDICAMENTO
 
         fetch("/setor/deleteSetor", {
-            method: "POST", 
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -327,29 +342,29 @@ function deletar_vacina(){
                 idMedicamento: medicamento,
             })
         })
-        .then(function (resposta){
-            console.log(resposta)
-            if(resposta.ok){
-                window.location = "./dashboard2.html"
-            }
-        })
+            .then(function (resposta) {
+                console.log(resposta)
+                if (resposta.ok) {
+                    window.location = "./dashboard2.html"
+                }
+            })
 
     }
 }
 
 var sensor
-function buscar_sensor(){
+function buscar_sensor() {
     var setor = sessionStorage.ID_SETOR
 
     fetch(`/medidas/mostrarSensor/${setor}`)
-        .then(function (resultado){
-            if(resultado.ok){
-                resultado.json().then(function (resposta){
+        .then(function (resultado) {
+            if (resultado.ok) {
+                resultado.json().then(function (resposta) {
                     sensor = resposta[0].idSensor
 
-                    setInterval(() => {
+                    /* setInterval(() => {
                         inserir_metricas()
-                    }, 4000);
+                    }, 4000); */
                 })
             }
         })
@@ -357,16 +372,16 @@ function buscar_sensor(){
 
 
 
-function inserir_metricas(){
+function inserir_metricas() {
 
     var temperatura = parseInt(7 + Math.random() * 11) * -1
     var chance = parseInt(Math.random() * 10)
-    if(chance % 6 == 0){
+    if (chance % 6 == 0) {
         temperatura = parseInt(4 + Math.random() * 6) * -1
     }
 
     fetch(`/medidas/inserir_metricas`, {
-        method: "POST", 
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
@@ -375,9 +390,9 @@ function inserir_metricas(){
             temperatura
         })
     })
-    .then(function (resultado){
-        if(resultado.ok){
-            console.log("Cadastrando")
-        }
-    })
+        .then(function (resultado) {
+            if (resultado.ok) {
+                console.log("Cadastrando")
+            }
+        })
 }

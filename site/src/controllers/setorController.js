@@ -202,6 +202,13 @@ function deleteSetor(req, res){
             res.json(resultado)
         })
 }
+function carregarNomeVacina(req, res){
+ 
+    var medicamento = req.params.idMedicamento
+    
+    setorModel.carregarNomeVacina(medicamento).then((resultado)=>res.json(resultado))
+
+}
 
 module.exports = {
     cadastrar,
@@ -216,5 +223,6 @@ module.exports = {
     manutencao,
     tipoMedicamento,
     capacidadeSetor,
-    deleteSetor
+    deleteSetor,
+    carregarNomeVacina
 }
